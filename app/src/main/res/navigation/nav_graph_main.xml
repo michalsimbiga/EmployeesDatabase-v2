@@ -18,6 +18,15 @@
             app:popUpTo="@+id/homeFragment"
             app:popUpToInclusive="false" />
 
+        <action android:id="@+id/action_home_to_edit_with_arg"
+            app:destination="@+id/addFragment">
+            <argument
+                android:name="employee"
+                app:argType="com.android.model.EmployeeItem"
+                app:nullable="true"
+                android:defaultValue="@null" />
+        </action>
+
     </fragment>
 
     <fragment
@@ -25,6 +34,12 @@
         android:name="com.android.presentation.add.AddFragment"
         android:label="AddFragment"
         tools:layout="@layout/fragment_edit">
+
+        <argument
+            android:name="employee"
+            app:nullable="true"
+            app:argType="com.android.model.EmployeeItem"
+            android:defaultValue="@null"/>
 
         <action
             android:id="@+id/action_add_to_home"

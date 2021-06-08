@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.android.di.home.HomeInjector
 import com.core.ui.BaseFragment
 import com.prosoma.livingwell.R
 import com.prosoma.livingwell.databinding.FragmentHomeBinding
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
@@ -30,7 +27,7 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     private val adapter: EmployeesAdapter by lazy {
         EmployeesAdapter(
             onDeleteClick = { employee -> viewModel.deleteEmployee(employee = employee) },
-            onEditClick = {}
+            onEditClick = { employee -> navigator.navigateToAddFragmentWithEmployee(employee) }
         )
     }
 
@@ -45,9 +42,8 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         binding.addButton.setOnClickListener { navigator.navigateToAddFragment() }
         binding.rvEmployees.adapter = adapter
 
-        lifecycleScope.launch {
-            viewModel.uiState.collect { adapter.submitList(it) }
-        }
+        viewModel.employees.observe(viewLifecycleOwner) { it -> adapter.submitList(it) }
+//        viewModel.uiState.collect { it -> adapter.submitList(it) }
     }
 
 }

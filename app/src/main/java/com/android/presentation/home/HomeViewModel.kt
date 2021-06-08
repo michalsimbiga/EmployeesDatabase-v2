@@ -12,10 +12,7 @@ import com.domain.models.Employee
 import com.domain.usecases.DeleteEmployeeUseCase
 import com.domain.usecases.GetEmployeesUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,7 +36,9 @@ class HomeViewModel @Inject constructor(
         deleteEmployeeUseCase(
             viewModelScope,
             Dispatchers.Default,
-            employee.toDomain()
+            employee.toDomain(),
+            onSuccess = { getAllEmployees() },
+            onFailure = {}
         )
     }
 
@@ -60,6 +59,7 @@ class HomeViewModel @Inject constructor(
             flow.collect {
                 Log.d("VUKO", "Got from db collect $it")
                 _uiState.value = it.map { it.toItem() }
+                _employees.value = it.map { it.toItem() }
             }
         }
     }
