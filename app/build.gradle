@@ -15,6 +15,10 @@ android {
         }
     }
 
+    kapt {
+        correctErrorTypes = true
+    }
+
     flavorDimensions "version"
     productFlavors {
         dev {
@@ -47,8 +51,16 @@ dependencies {
 
     implementation "com.google.dagger:dagger:$libVersion.dagger2"
     kapt "com.google.dagger:dagger-compiler:$libVersion.dagger2"
+
+    implementation "androidx.room:room-runtime:$libVersion.room_version"
+    kapt "androidx.room:room-compiler:$libVersion.room_version"
+
     implementation "androidx.navigation:navigation-fragment-ktx:$libVersion.navigationComponent"
     implementation "androidx.navigation:navigation-ui-ktx:$libVersion.navigationComponent"
+
+    implementation "com.airbnb.android:epoxy:$libVersion.epoxy"
+    kapt "com.airbnb.android:epoxy-processor:$libVersion.epoxy"
+
     implementation "com.jakewharton.timber:timber:$libVersion.timber"
     implementation "com.microsoft.appcenter:appcenter-analytics:$libVersion.appCenter"
     implementation "com.microsoft.appcenter:appcenter-crashes:$libVersion.appCenter"

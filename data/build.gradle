@@ -32,7 +32,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$libVersion.dagger2"
 
     implementation "androidx.room:room-runtime:$libVersion.room_version"
-    annotationProcessor "androidx.room:room-compiler:$libVersion.room_version"
+    kapt "androidx.room:room-compiler:$libVersion.room_version"
 
     api "com.squareup.retrofit2:retrofit:$libVersion.retrofit"
     api "com.squareup.retrofit2:converter-moshi:$libVersion.retrofit"

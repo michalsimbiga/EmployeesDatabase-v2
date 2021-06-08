@@ -1,11 +1,8 @@
 package com.android.presentation.main
 
 import android.app.Activity
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.core.Constants.DialogRequests.REQUEST_ACCEPT_TERMS
-import com.core.Constants.FragmentArgs.ARG_DIALOG_REQUEST
 import com.core.navigation.BaseActivityNavigator
 import com.domain.models.MainNavigator
 import com.prosoma.livingwell.R
@@ -16,12 +13,12 @@ class MainActivityNavigator @Inject constructor(
 ) : BaseActivityNavigator(), MainNavigator {
 
     override val navController: NavController
-        get() = activity.findNavController(R.id.navContainerMain)
+        get() = activity.findNavController(R.id.navHostFragment)
 
     override fun showFirstDialog() {
-        navigate(
-            R.id.action_global_firstDialogFragment,
-            bundleOf(ARG_DIALOG_REQUEST to REQUEST_ACCEPT_TERMS)
-        )
+//        navigate(
+//            R.id.action_global_firstDialogFragment,
+//            bundleOf(ARG_DIALOG_REQUEST to REQUEST_ACCEPT_TERMS)
+//        )
     }
 }

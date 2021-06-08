@@ -10,5 +10,4 @@ data class EmployeeEntity(
     val lastName: String,
     val age: Int,
     val gender: String,
-    val addressess: List<AddressEntity>
 )

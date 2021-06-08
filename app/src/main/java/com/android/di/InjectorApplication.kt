@@ -1,18 +1,15 @@
 package com.android.di
 
 import android.app.Application
-import com.prosoma.livingwell.di.ApplicationComponent
-import com.prosoma.livingwell.di.DaggerApplicationComponent
-import com.prosoma.livingwell.di.first.FirstInjector
-import com.prosoma.livingwell.di.main.MainComponent
-import com.prosoma.livingwell.di.main.MainInjector
-import com.android.presentation.first.FirstFragment
+import com.android.di.home.HomeInjector
+import com.android.presentation.home.HomeFragment
 import com.android.presentation.main.MainActivity
-import com.android.presentation.second.SecondFragment
+import com.android.di.main.MainComponent
+import com.android.di.main.MainInjector
 
 open class InjectorApplication : Application(),
     MainInjector,
-    FirstInjector {
+    HomeInjector {
 
     private lateinit var applicationComponent: ApplicationComponent
 
@@ -41,13 +38,10 @@ open class InjectorApplication : Application(),
         mainComponent = null
     }
 
-    override fun inject(fragment: FirstFragment) {
-        mainComponent?.firstComponentFactory()
+
+    override fun inject(fragment: HomeFragment) {
+        mainComponent?.homeComponentFactory()
             ?.bindFragment(fragment)
             ?.inject(fragment) ?: throw IllegalStateException()
-    }
-
-    override fun inject(fragment: SecondFragment) {
-        mainComponent?.inject(fragment)
     }
 }

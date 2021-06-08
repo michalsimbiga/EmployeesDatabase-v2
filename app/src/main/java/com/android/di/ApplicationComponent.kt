@@ -1,10 +1,10 @@
-package com.prosoma.livingwell.di
+package com.android.di
 
 import android.app.Application
 import com.core.di.CoreModule
 import com.data.di.DataModule
 import com.domain.di.DomainModule
-import com.prosoma.livingwell.di.main.MainComponent
+import com.android.di.main.MainComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

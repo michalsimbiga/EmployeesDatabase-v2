@@ -3,33 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/firstFragment"
-        android:name="com.android.presentation.first.FirstFragment"
-        android:label="FirstFragment"
-        tools:layout="@layout/fragment_first">
-        <action
-            android:id="@+id/action_firstFragment_to_secondFragment"
-            app:destination="@id/secondFragment" />
+        android:id="@+id/homeFragment"
+        android:name="com.android.presentation.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+<!--        <action-->
+<!--            android:id="@+id/action_home_to_edit"-->
+<!--            app:destination="@id/addEmployeeFragment"-->
+<!--            app:launchSingleTop="true"-->
+<!--            app:popUpTo="@+id/homeFragment"-->
+<!--            app:popUpToInclusive="false">-->
+<!--            <argument-->
+<!--                android:name="employee"-->
+<!--                app:argType="com.employeesdatabase.models.EmployeeItem" />-->
+<!---->
+<!--        </action>-->
+
     </fragment>
-    <fragment
-        android:id="@+id/secondFragment"
-        android:name="com.android.presentation.second.SecondFragment"
-        android:label="SecondFragment"
-        tools:layout="@layout/fragment_second" />
-    <dialog
-        android:id="@+id/firstDialogFragment"
-        android:name="com.android.presentation.first.FirstDialogFragment"
-        android:label="FirstDialogFragment"
-        tools:layout="@layout/dialog_fragment_first">
-        <argument
-            android:name="request_name"
-            app:argType="string"
-            app:nullable="false" />
-    </dialog>
-    <action
-        android:id="@+id/action_global_firstDialogFragment"
-        app:destination="@id/firstDialogFragment" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/addEmployeeFragment"-->
+<!--        android:name="com.employeesdatabase.ui.edit.EditFragment"-->
+<!--        android:label="AddEmployeeFragment"-->
+<!--        tools:layout="@layout/fragment_edit">-->
+
+<!--        <argument-->
+<!--            android:name="employee"-->
+<!--            android:defaultValue="@null"-->
+<!--            app:argType="com.employeesdatabase.models.EmployeeItem"-->
+<!--            app:nullable="true" />-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_edit_to_home"-->
+<!--            app:destination="@id/homeFragment"-->
+<!--            app:popUpTo="@+id/homeFragment"-->
+<!--            app:popUpToInclusive="true" />-->
+
+<!--    </fragment>-->
 </navigation>

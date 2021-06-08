@@ -7,15 +7,14 @@ import com.core.ui.BaseActivity
 import com.domain.models.MainNavigator
 import com.prosoma.livingwell.R
 import com.prosoma.livingwell.databinding.ActivityMainBinding
-import com.prosoma.livingwell.di.main.MainInjector
+import com.android.di.main.MainInjector
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity(override val layoutId: Int = R.layout.activity_main) :
+    BaseActivity<ActivityMainBinding>() {
 
     private val injector: MainInjector
         get() = application as MainInjector
-
-    override val layoutId: Int = R.layout.activity_main
 
     @Inject
     lateinit var navigator: MainNavigator

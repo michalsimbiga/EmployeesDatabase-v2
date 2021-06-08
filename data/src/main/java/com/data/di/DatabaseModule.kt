@@ -1,17 +1,17 @@
 package com.data.di
 
-import android.content.Context
+import android.app.Application
 import androidx.room.Room
 import com.data.database.ApplicationDatabase
 import dagger.Module
 import dagger.Provides
 
 @Module
-class DatabaseModule {
+class DatabaseModule  {
 
     @Provides
-    fun getDatabase(context: Context): ApplicationDatabase = Room.databaseBuilder(
-        context,
+    fun provideDatabase(application: Application) = Room.databaseBuilder(
+        application,
         ApplicationDatabase::class.java, "database-name"
     ).build()
 }

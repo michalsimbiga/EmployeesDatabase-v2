@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/streetEditableInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_edit_editable_address_text_input_margin_top_10dp"
+        android:hint="@string/address_street_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/streetEditableEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cityEditableInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_edit_editable_address_text_input_margin_top_10dp"
+        android:hint="@string/address_city_text"
+        app:layout_constraintEnd_toEndOf="@id/streetEditableInputLayout"
+        app:layout_constraintStart_toStartOf="@id/streetEditableInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/streetEditableInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cityEditableEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/zipEditableInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_edit_editable_address_text_input_margin_top_10dp"
+        android:hint="@string/address_zip_text"
+        app:layout_constraintEnd_toEndOf="@id/cityEditableInputLayout"
+        app:layout_constraintStart_toStartOf="@id/cityEditableInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/cityEditableInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/zipEditableEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/countryEditableInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fragment_edit_editable_address_text_input_margin_top_10dp"
+        android:hint="@string/address_country_text"
+        app:layout_constraintEnd_toEndOf="@id/zipEditableInputLayout"
+        app:layout_constraintStart_toStartOf="@id/zipEditableInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/zipEditableInputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/countryEditableEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/discardAddressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fragment_edit_address_discard_button_margin_end_10dp"
+        android:text="@string/fragment_edit_address_discard_button_text"
+        app:layout_constraintEnd_toStartOf="@id/acceptAddressButton"
+        app:layout_constraintTop_toBottomOf="@id/countryEditableInputLayout" />
+
+    <Button
+        android:id="@+id/acceptAddressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fragment_edit_address_add_button_margin_end_10dp"
+        android:text="@string/fragment_edit_address_add_button_text"
+        app:layout_constraintEnd_toEndOf="@id/countryEditableInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/countryEditableInputLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,13 +7,13 @@ import com.data.database.models.EmployeeEntity
 interface EmployeeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertEmployee(carrier: EmployeeEntity)
+    fun insertEmployee(employee: EmployeeEntity)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateEmployee(carrier: EmployeeEntity)
+    fun updateEmployee(employee: EmployeeEntity)
 
     @Delete
-    fun deleteEmployee(carrier: EmployeeEntity)
+    fun deleteEmployee(employee: EmployeeEntity)
 
     @Query("SELECT * FROM EmployeeEntity")
     fun getAllEmployees(): List<EmployeeEntity>

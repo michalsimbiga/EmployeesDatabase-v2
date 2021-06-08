@@ -1,10 +1,10 @@
-package com.prosoma.livingwell.di.main
+package com.android.di.main
 
 import android.app.Activity
-import com.prosoma.livingwell.di.ActivityScope
-import com.prosoma.livingwell.di.first.FirstComponent
+import com.android.di.home.HomeComponent
 import com.android.presentation.main.MainActivity
-import com.android.presentation.second.SecondFragment
+import com.android.di.ActivityScope
+import com.prosoma.livingwell.di.main.MainModule
 import dagger.BindsInstance
 import dagger.Subcomponent
 
@@ -13,9 +13,8 @@ import dagger.Subcomponent
 interface MainComponent {
 
     fun inject(activity: MainActivity)
-    fun inject(fragment: SecondFragment)
 
-    fun firstComponentFactory(): FirstComponent.Factory
+    fun homeComponentFactory(): HomeComponent.Factory
 
     @Subcomponent.Factory
     interface Factory {

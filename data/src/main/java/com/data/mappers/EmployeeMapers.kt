@@ -10,7 +10,7 @@ fun EmployeeEntity.toDomain() =
         lastName = lastName,
         age = age,
         gender = gender,
-        addressess = addressess.map { it.toDomain() }
+        addressess = listOf()
     )
 
 fun Employee.toEntity() =
@@ -20,5 +20,4 @@ fun Employee.toEntity() =
         lastName = lastName,
         age = age,
         gender = gender,
-        addressess = addressess.map { it.toEntity() }
     )

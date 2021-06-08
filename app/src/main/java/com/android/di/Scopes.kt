@@ -1,4 +1,4 @@
-package com.prosoma.livingwell.di
+package com.android.di
 
 import javax.inject.Scope
 
