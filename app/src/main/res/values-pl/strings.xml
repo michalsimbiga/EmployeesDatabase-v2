@@ -1,0 +1,14 @@
+<!-- Localizable created with localio. DO NOT MODIFY. -->
+<resources>
+  <string name="app_name">Living well</string>
+  <string name="sign_in_title_text">Witaj w aplikacji Living Well</string>
+  <string name="sign_in_forgotten_password_button">Nie pamiętasz hasła?</string>
+  <string name="sign_in_sign_in_button">Zaloguj się</string>
+  <string name="sign_in_no_account_text">Nie masz konta?</string>
+  <string name="sign_in_create_account_button">Stwórz nowe konto</string>
+  <string name="sign_in_email_input_label_text">Email</string>
+  <string name="sign_in_email_input_hint_text">np. kamila@gmail.com</string>
+  <string name="sign_in_password_input_label_text">Hasło</string>
+  <string name="sign_in_password_input_hint_text">min. 8 znaków w tym 1 duża litera</string>
+
+</resources>

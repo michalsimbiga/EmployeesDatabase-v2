@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/shared.gradle"
+
+android {
+    flavorDimensions "version"
+    productFlavors {
+        live {
+            dimension "version"
+            buildConfigField "String", "API_URL", '"https://randomuser.me"'
+        }
+        dev {
+            dimension "version"
+            buildConfigField "String", "API_URL", '"https://randomuser.me"'
+        }
+        qa {
+            dimension "version"
+            buildConfigField "String", "API_URL", '"https://randomuser.me"'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':domain')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libVersion.coroutines"
+
+    implementation "com.google.dagger:dagger:$libVersion.dagger2"
+    kapt "com.google.dagger:dagger-compiler:$libVersion.dagger2"
+
+    implementation "androidx.room:room-runtime:$libVersion.room_version"
+    annotationProcessor "androidx.room:room-compiler:$libVersion.room_version"
+
+    api "com.squareup.retrofit2:retrofit:$libVersion.retrofit"
+    api "com.squareup.retrofit2:converter-moshi:$libVersion.retrofit"
+    api "com.squareup.okhttp3:logging-interceptor:$libVersion.loggingInterceptor"
+    implementation "com.jakewharton.timber:timber:$libVersion.timber"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

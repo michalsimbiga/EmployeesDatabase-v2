@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/shared.gradle"
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libVersion.coroutines"
+    implementation "com.google.dagger:dagger:$libVersion.dagger2"
+
+    kapt "com.google.dagger:dagger-compiler:$libVersion.dagger2"
+    implementation "androidx.navigation:navigation-fragment-ktx:$libVersion.navigationComponent"
+    implementation "androidx.navigation:navigation-ui-ktx:$libVersion.navigationComponent"
+    implementation "com.jakewharton.timber:timber:$libVersion.timber"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

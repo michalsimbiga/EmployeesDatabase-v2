@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.8">
+      <module name="Android.app" target="11" />
+      <module name="Android.core" target="11" />
+      <module name="Android.data" target="11" />
+      <module name="Living_well.app" target="11" />
+      <module name="Living_well.core" target="11" />
+      <module name="Living_well.data" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

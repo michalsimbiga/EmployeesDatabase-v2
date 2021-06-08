@@ -1,0 +1,9 @@
+def getProjectVersionCode() {
+    def time = (System.currentTimeMillis() / 1000) as int
+    println "###Setting VersionCode to: $time"
+    return time
+}
+
+ext {
+    getProjectVersionCode = this.&getProjectVersionCode
+}
