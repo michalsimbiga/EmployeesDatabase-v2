@@ -1,14 +1,17 @@
 package com.android.di
 
 import android.app.Application
+import com.android.di.add.AddInjector
 import com.android.di.home.HomeInjector
-import com.android.presentation.home.HomeFragment
-import com.android.presentation.main.MainActivity
 import com.android.di.main.MainComponent
 import com.android.di.main.MainInjector
+import com.android.presentation.add.AddFragment
+import com.android.presentation.home.HomeFragment
+import com.android.presentation.main.MainActivity
 
 open class InjectorApplication : Application(),
     MainInjector,
+    AddInjector,
     HomeInjector {
 
     private lateinit var applicationComponent: ApplicationComponent
@@ -34,14 +37,19 @@ open class InjectorApplication : Application(),
         mainComponent?.inject(activity)
     }
 
-    override fun clearMainComponent() {
-        mainComponent = null
-    }
-
-
     override fun inject(fragment: HomeFragment) {
         mainComponent?.homeComponentFactory()
             ?.bindFragment(fragment)
             ?.inject(fragment) ?: throw IllegalStateException()
+    }
+
+    override fun inject(fragment: AddFragment) {
+        mainComponent?.addComponentFactory()
+            ?.bindFragment(fragment)
+            ?.inject(fragment) ?: throw IllegalStateException()
+    }
+
+    override fun clearMainComponent() {
+        mainComponent = null
     }
 }

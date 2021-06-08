@@ -2,15 +2,118 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
 
-        <com.airbnb.epoxy.EpoxyRecyclerView
-            android:id="@+id/addEmployeeRecycler"
+        <TextView
+            android:id="@+id/editEmployeeHeader"
+            style="@style/HeaderItem"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/fragment_edit_recycler_padding_10dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fragment_edit_header_margin_bottom_10dp"
+            android:text="@string/fragment_edit_employee_detail_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Example header" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editEmployeeFirstName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
+            android:hint="@string/first_name_hint"
+            app:layout_constraintTop_toBottomOf="@id/editEmployeeHeader">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editableEmployeeFirstNameTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                tools:hint="Example hint"
+                tools:text="Example text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editEmployeeLastName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/editEmployeeFirstName"
+            android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
+            android:hint="@string/second_name_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editableEmployeeLastNameTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                tools:hint="Example hint"
+                tools:text="Example text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editEmployeeAge"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/editEmployeeLastName"
+            android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
+            android:hint="@string/age_name_hint">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editableEmployeeAgeTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:nextFocusDown="@id/editableEmployeeGenderRadioGroup"
+                android:singleLine="true"
+                tools:hint="Example hint"
+                tools:text="56" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            app:layout_constraintTop_toBottomOf="@id/editEmployeeAge"
+            android:id="@+id/editableEmployeeGenderHeader"
+            style="@style/HeaderItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fragment_edit_header_margin_bottom_10dp"
+            android:text="@string/fragment_edit_gender_header"
+            tools:text="Example header" />
+
+        <RadioGroup
+            android:id="@+id/editableEmployeeGenderRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/editableEmployeeGenderHeader"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <RadioButton
+                android:id="@+id/editableEmployeeNotDisclosedRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender_not_disclosed" />
+
+            <RadioButton
+                android:id="@+id/editableEmployeeMaleRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender_male" />
+
+            <RadioButton
+                android:id="@+id/editableEmployeeFemaleRadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender_female" />
+
+        </RadioGroup>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/addEmployeeButton"
@@ -20,7 +123,9 @@
             android:layout_marginEnd="@dimen/fragment_edit_done_button_margin_end_10dp"
             android:layout_marginBottom="@dimen/fragment_edit_done_button_margin_bottom_10dp"
             android:text="@string/fragment_edit_done_button_text"
-            app:icon="@drawable/ic_done" />
+            app:icon="@drawable/ic_done"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

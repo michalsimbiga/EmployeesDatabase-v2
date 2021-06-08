@@ -11,7 +11,6 @@ import com.android.di.home.HomeInjector
 import com.core.ui.BaseFragment
 import com.prosoma.livingwell.R
 import com.prosoma.livingwell.databinding.FragmentHomeBinding
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import javax.inject.Inject
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
@@ -23,6 +22,9 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var navigator: HomeNavigator
+
     private val viewModel: HomeViewModel by viewModels { viewModelProviderFactory }
     private val adapter: EmployeesAdapter by lazy { EmployeesAdapter() }
 
@@ -31,28 +33,10 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         injector.inject(this)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_home, container, false)
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupView()
+
+        binding.addButton.setOnClickListener { navigator.navigateToAddFragment() }
     }
 
-    private fun setupView() {
-//        setupListeners()
-//        setupRecyclerView()
-//        setupViewLiveDataObservers()
-    }
-
-
-    override fun onDestroyView() {
-//        onRecyclerViewDetached(homeRecycler)
-//        addButton.setOnClickListener(null)
-
-        super.onDestroyView()
-    }
 }
