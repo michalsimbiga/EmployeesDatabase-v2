@@ -1,7 +1,7 @@
 package com.data.di
 
-import com.data.repositories.DefaultUsersRepository
-import com.domain.repositories.UsersRepository
+import com.data.repositories.EmployeesRepositoryImpl
+import com.domain.repositories.EmployeesRepository
 import dagger.Binds
 import dagger.Module
 
@@ -9,5 +9,5 @@ import dagger.Module
 internal interface RepositoriesModule {
 
     @Binds
-    fun bindUserRepository(repository: DefaultUsersRepository): UsersRepository
+    fun bindUserRepository(repository: EmployeesRepositoryImpl): EmployeesRepository
 }

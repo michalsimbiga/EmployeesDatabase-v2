@@ -5,7 +5,7 @@ import com.domain.models.Address
 
 fun AddressEntity.toDomain() =
     Address(
-        id = id ?: -1,
+        id = id,
         street = street,
         city = city,
         zip = zip,

@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
-import com.prosoma.core.Constants.FragmentArgs.ARG_DIALOG_REQUEST
+import com.core.Constants.FragmentArgs.ARG_DIALOG_REQUEST
 import com.core.ui.BaseDialogFragment
 import com.prosoma.livingwell.R
 import com.prosoma.livingwell.databinding.DialogFragmentFirstBinding

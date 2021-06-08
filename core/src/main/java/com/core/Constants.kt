@@ -1,4 +1,4 @@
-package com.prosoma.core
+package com.core
 
 object Constants {
 

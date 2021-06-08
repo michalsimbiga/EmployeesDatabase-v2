@@ -5,7 +5,7 @@ import com.domain.models.Employee
 
 fun EmployeeEntity.toDomain() =
     Employee(
-        id = id ?: -1,
+        id = id,
         firstName = firstName,
         lastName = lastName,
         age = age,

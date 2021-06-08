@@ -4,8 +4,8 @@ import android.app.Activity
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.prosoma.core.Constants.DialogRequests.REQUEST_ACCEPT_TERMS
-import com.prosoma.core.Constants.FragmentArgs.ARG_DIALOG_REQUEST
+import com.core.Constants.DialogRequests.REQUEST_ACCEPT_TERMS
+import com.core.Constants.FragmentArgs.ARG_DIALOG_REQUEST
 import com.core.navigation.BaseActivityNavigator
 import com.domain.models.MainNavigator
 import com.prosoma.livingwell.R
