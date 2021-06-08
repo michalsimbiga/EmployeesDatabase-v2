@@ -1,6 +1,5 @@
 package com.domain.usecases
 
-import com.domain.models.User
 import com.domain.repositories.UsersRepository
 import com.domain.usecases.base.UseCase
 import javax.inject.Inject
