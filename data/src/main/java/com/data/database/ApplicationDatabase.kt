@@ -6,7 +6,9 @@ import com.data.database.dao.AddressDao
 import com.data.database.dao.EmployeeDao
 import com.data.database.models.AddressEntity
 import com.data.database.models.EmployeeEntity
+import javax.inject.Singleton
 
+@Singleton
 @Database(
     entities = [
         AddressEntity::class,

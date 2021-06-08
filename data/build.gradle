@@ -1,23 +1,6 @@
 apply plugin: 'com.android.library'
 apply from: "$rootDir/shared.gradle"
 
-android {
-    flavorDimensions "version"
-    productFlavors {
-        live {
-            dimension "version"
-            buildConfigField "String", "API_URL", '"https://randomuser.me"'
-        }
-        dev {
-            dimension "version"
-            buildConfigField "String", "API_URL", '"https://randomuser.me"'
-        }
-        qa {
-            dimension "version"
-            buildConfigField "String", "API_URL", '"https://randomuser.me"'
-        }
-    }
-}
 
 dependencies {
     implementation project(':core')
@@ -31,7 +14,8 @@ dependencies {
     implementation "com.google.dagger:dagger:$libVersion.dagger2"
     kapt "com.google.dagger:dagger-compiler:$libVersion.dagger2"
 
-    implementation "androidx.room:room-runtime:$libVersion.room_version"
+    api "androidx.room:room-runtime:$libVersion.room_version"
+    implementation "androidx.room:room-ktx:$libVersion.room_version"
     kapt "androidx.room:room-compiler:$libVersion.room_version"
 
     api "com.squareup.retrofit2:retrofit:$libVersion.retrofit"

@@ -16,9 +16,7 @@
             app:destination="@id/addFragment"
             app:launchSingleTop="true"
             app:popUpTo="@+id/homeFragment"
-            app:popUpToInclusive="false">
-
-        </action>
+            app:popUpToInclusive="false" />
 
     </fragment>
 
@@ -26,35 +24,14 @@
         android:id="@+id/addFragment"
         android:name="com.android.presentation.add.AddFragment"
         android:label="AddFragment"
-        tools:layout="@layout/fragment_edit" >
+        tools:layout="@layout/fragment_edit">
 
-    <action
-        android:id="@+id/action_add_to_home"
-        app:destination="@id/homeFragment"
-        app:launchSingleTop="true"
-        app:popUpTo="@+id/addFragment"
-        app:popUpToInclusive="false">
+        <action
+            android:id="@+id/action_add_to_home"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/addFragment"
+            app:popUpToInclusive="false" />
 
-    </action>
     </fragment>
-
-    <!--    <fragment-->
-    <!--        android:id="@+id/addEmployeeFragment"-->
-    <!--        android:name="com.employeesdatabase.ui.edit.EditFragment"-->
-    <!--        android:label="AddEmployeeFragment"-->
-    <!--        tools:layout="@layout/fragment_edit">-->
-
-    <!--        <argument-->
-    <!--            android:name="employee"-->
-    <!--            android:defaultValue="@null"-->
-    <!--            app:argType="com.employeesdatabase.models.EmployeeItem"-->
-    <!--            app:nullable="true" />-->
-
-    <!--        <action-->
-    <!--            android:id="@+id/action_edit_to_home"-->
-    <!--            app:destination="@id/homeFragment"-->
-    <!--            app:popUpTo="@+id/homeFragment"-->
-    <!--            app:popUpToInclusive="true" />-->
-
-    <!--    </fragment>-->
 </navigation>

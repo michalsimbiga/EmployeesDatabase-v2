@@ -3,13 +3,17 @@ package com.android.presentation.add
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.RadioButton
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.android.di.add.AddInjector
 import com.android.presentation.home.EmployeesAdapter
 import com.core.ui.BaseFragment
 import com.prosoma.livingwell.R
 import com.prosoma.livingwell.databinding.FragmentEditBinding
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
@@ -25,7 +29,7 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
     lateinit var viewModelProviderFactory: ViewModelProvider.Factory
 
     private val viewModel: AddViewModel by viewModels { viewModelProviderFactory }
-    private val adapter: EmployeesAdapter by lazy { EmployeesAdapter() }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -36,8 +40,25 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
         super.onViewCreated(view, savedInstanceState)
 
         binding.addEmployeeButton.setOnClickListener {
-            navigator.navigateToHome()
+            val selectedRadioButtonId =
+                binding.editableEmployeeGenderRadioGroup.checkedRadioButtonId
+            val selectedRadioText: String =
+                binding.root.findViewById<RadioButton>(selectedRadioButtonId)?.text?.toString() ?: ""
+
+            viewModel.addEmployeeToDatabase(
+                binding.editableEmployeeFirstNameTextEdit.text.toString(),
+                binding.editableEmployeeLastNameTextEdit.text.toString(),
+                binding.editableEmployeeAgeTextEdit.text.toString().toInt(),
+                selectedRadioText
+            )
         }
+
+        lifecycleScope.launch {
+            viewModel.navigation.collect { navigate ->
+                if (navigate) navigator.navigateToHome()
+            }
+        }
+
     }
 
 }

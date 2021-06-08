@@ -2,6 +2,7 @@ package com.data.database.dao
 
 import androidx.room.*
 import com.data.database.models.EmployeeEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EmployeeDao {
@@ -16,5 +17,5 @@ interface EmployeeDao {
     fun deleteEmployee(employee: EmployeeEntity)
 
     @Query("SELECT * FROM EmployeeEntity")
-    fun getAllEmployees(): List<EmployeeEntity>
+    fun getAllEmployees(): Flow<List<EmployeeEntity>>
 }
