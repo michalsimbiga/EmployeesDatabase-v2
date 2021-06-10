@@ -1,4 +1,4 @@
-package com.prosoma.livingwell
+package com.android
 
 import org.junit.Test
 

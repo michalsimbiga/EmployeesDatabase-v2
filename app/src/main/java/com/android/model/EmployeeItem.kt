@@ -28,7 +28,7 @@ fun Employee.toItem() =
         lastName = lastName,
         age = age,
         gender = gender,
-        addressess = emptyList()
+        addressess = addresses.map { it.toItem() }
     )
 
 fun EmployeeItem.toDomain() =

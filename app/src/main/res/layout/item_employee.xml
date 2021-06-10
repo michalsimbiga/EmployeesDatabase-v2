@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="employee"
             type="com.android.model.EmployeeItem" />
@@ -33,7 +34,7 @@
             android:id="@+id/homeEmployeeNameHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_employee_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/employee_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +43,7 @@
             android:id="@+id/homeEmployeeName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_employee_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@{employee.firstName + ` ` + employee.lastName}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +55,7 @@
             android:id="@+id/homeEmployeeAgeHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_employee_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/employee_age"
             app:layout_constraintStart_toStartOf="@id/homeEmployeeNameHeader"
             app:layout_constraintTop_toBottomOf="@id/homeEmployeeNameHeader" />
@@ -63,19 +64,19 @@
             android:id="@+id/homeEmployeeAge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_employee_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@{String.valueOf(employee.age)}"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/homeEmployeeAgeHeader"
             app:layout_constraintTop_toTopOf="@id/homeEmployeeAgeHeader"
-            app:layout_constraintEnd_toEndOf="parent"
             tools:text="60" />
 
         <TextView
             android:id="@+id/homeEmployeeGenderHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_employee_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/employee_gender"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/homeEmployeeAgeHeader" />
@@ -84,13 +85,23 @@
             android:id="@+id/homeEmployeeGender"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_employee_header_margin_start_10dp"
-            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@{employee.gender}"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/homeEmployeeGenderHeader"
             app:layout_constraintTop_toTopOf="@id/homeEmployeeGenderHeader"
             tools:text="Pikachu" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvEmployeeAddresses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="2"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeEmployeeGender"
+            tools:listitem="@layout/item_address" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

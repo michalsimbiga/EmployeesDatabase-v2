@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 class AddEmployeeUseCase @Inject constructor(
     private val repository: EmployeesRepository
-) : UseCase<AddEmployeeUseCase.AddEmployeeParams, Unit>() {
+) : UseCase<AddEmployeeUseCase.AddEmployeeParams, Long>() {
 
-    override suspend fun run(params: AddEmployeeParams): Unit {
+    override suspend fun run(params: AddEmployeeParams): Long {
         val employee = Employee(
             id = null,
             firstName = params.name,

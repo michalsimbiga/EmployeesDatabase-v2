@@ -7,7 +7,10 @@ import com.domain.models.Address
 import com.domain.models.Employee
 import com.domain.repositories.EmployeesRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.take
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -18,7 +21,7 @@ class EmployeesRepositoryImpl @Inject constructor(private val database: Applicat
         database.employeesDao().getAllEmployees()
             .map { it.map { employeeWithAddressesEntity -> employeeWithAddressesEntity.toDomain() } }
 
-    override suspend fun insertEmployee(employee: Employee): Unit =
+    override suspend fun insertEmployee(employee: Employee): Long =
         database.employeesDao().insertEmployee(employee.toEntity())
 
     override suspend fun updateEmployee(employee: Employee): Unit =
@@ -29,4 +32,7 @@ class EmployeesRepositoryImpl @Inject constructor(private val database: Applicat
 
     override suspend fun deleteAddress(address: Address): Unit =
         database.addressDao().deleteAddress(address = address.toEntity())
+
+    override suspend fun insertAddress(address: Address): Unit =
+        database.addressDao().insertAddress(address = address.toEntity())
 }

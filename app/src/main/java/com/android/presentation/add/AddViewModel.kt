@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.model.AddressItem
+import com.android.model.toDomain
+import com.domain.usecases.AddAddressUseCase
 import com.domain.usecases.AddEmployeeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,9 +13,9 @@ import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class AddViewModel @Inject constructor(
-    private val addEmployeeUseCase: AddEmployeeUseCase
+    private val addEmployeeUseCase: AddEmployeeUseCase,
+    private val addAddressUseCase: AddAddressUseCase
 ) : ViewModel() {
-
 
     private val _addressess =
         MutableStateFlow<List<AddressViewType>>(listOf(AddressViewType.AddNew))
@@ -32,15 +34,29 @@ class AddViewModel @Inject constructor(
                 age,
                 gender
             ),
-            onSuccess = {
-                Log.d("VUKO", "Added to db")
-                _navigation.value = true
+            onSuccess = { employeeId ->
+                addAddressesToDb(employeeId)
             },
             onFailure = {
                 Log.d("VUKO", "Not Added to db $it")
-                _navigation.value = true
+                _navigation.value = false
             }
         )
+    }
+
+    private fun addAddressesToDb(employeeId: Long) {
+        val addresses = _addressess.value.filterIsInstance<AddressViewType.Filled>()
+
+        addresses.forEach { address ->
+            addAddressUseCase(
+                viewModelScope,
+                dispatcher = Dispatchers.IO,
+                address.address
+                    .copy(employeeId = employeeId)
+                    .toDomain(),
+                onSuccess = { if (address == addresses.last()) _navigation.value = true }
+            )
+        }
     }
 
     fun onAddNewAddressClicked() {

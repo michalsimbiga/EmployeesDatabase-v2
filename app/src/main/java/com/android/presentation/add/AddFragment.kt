@@ -38,7 +38,6 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
         )
     }
 
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         injector.inject(this)
@@ -46,6 +45,17 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupView()
+        setupListeners()
+        setupObservers()
+    }
+
+    private fun setupView() {
+        binding.rvEditAddresses.adapter = adapter
+    }
+
+    private fun setupListeners() {
 
         binding.addEmployeeButton.setOnClickListener {
             val selectedRadioButtonId =
@@ -61,8 +71,9 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
                 selectedRadioText
             )
         }
+    }
 
-        binding.rvEditAddresses.adapter = adapter
+    private fun setupObservers() {
 
         lifecycleScope.launch {
             viewModel.addressess.collect { addressViewType ->
@@ -78,5 +89,4 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
         }
 
     }
-
 }

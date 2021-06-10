@@ -3,7 +3,7 @@ apply from: "$rootDir/shared.gradle"
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    defaultConfig { applicationId "com.prosoma.livingwell" }
+    defaultConfig { applicationId "com.employeedatabase" }
 
     buildTypes {
         debug {

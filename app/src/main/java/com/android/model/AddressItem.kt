@@ -12,7 +12,7 @@ data class AddressItem(
     val city: String = String.empty,
     val zip: String = String.empty,
     val country: String = String.empty,
-    val editable: Boolean = true
+    val employeeId: Long = -1,
 ) : Parcelable {
     fun isEmpty() =
         street.trim() == String.empty &&
@@ -27,7 +27,8 @@ fun AddressItem.toDomain() =
         street = street,
         city = city,
         zip = zip,
-        country = country
+        country = country,
+        employeeId = employeeId
     )
 
 fun Address.toItem() =
@@ -37,5 +38,5 @@ fun Address.toItem() =
         city = city,
         zip = zip,
         country = country,
-        editable = false
+        employeeId = employeeId
     )

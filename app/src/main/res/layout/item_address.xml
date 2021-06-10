@@ -13,13 +13,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fragment_edit_address_item_layout_margin_10dp">
+        android:layout_margin="@dimen/margin_medium">
 
         <TextView
             android:id="@+id/streetHeaderTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_edit_address_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/address_street_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:id="@+id/streetTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.street}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
             android:id="@+id/zipTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.zip}"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/zipHeaderTextView"
@@ -59,7 +59,7 @@
             android:id="@+id/cityHeaderTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_edit_address_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/address_city_text"
             app:layout_constraintStart_toEndOf="@id/zipTextView"
             app:layout_constraintTop_toTopOf="@id/zipHeaderTextView" />
@@ -68,7 +68,7 @@
             android:id="@+id/cityTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.city}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
             android:id="@+id/countryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.country}"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/countryHeaderTextView"

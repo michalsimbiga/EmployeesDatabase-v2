@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.model.EmployeeItem
+import com.android.presentation.add.AddressViewType
+import com.android.presentation.add.AddressesAdapter
 import com.core.getDiffUtilCallback
 import com.employeedatabase.databinding.ItemEmployeeBinding
 
@@ -29,11 +31,17 @@ class EmployeesAdapter(
         private val binding: ItemEmployeeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: EmployeeItem) {
-            binding.employee = data
-            binding.homeDeleteEmployeeButton.setOnClickListener { onDeleteClick.invoke(data) }
-            binding.homeEditEmployeeButton.setOnClickListener { onEditClick.invoke(data) }
+        private val adapter = AddressesAdapter({},{},{})
 
+        fun bind(data: EmployeeItem) {
+            with(binding) {
+                rvEmployeeAddresses.adapter = adapter
+                adapter.submitList(data.addressess.map { AddressViewType.Filled(it) })
+
+                employee = data
+                homeDeleteEmployeeButton.setOnClickListener { onDeleteClick.invoke(data) }
+                homeEditEmployeeButton.setOnClickListener { onEditClick.invoke(data) }
+            }
         }
     }
 }

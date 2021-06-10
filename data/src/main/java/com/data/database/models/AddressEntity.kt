@@ -9,5 +9,6 @@ data class AddressEntity(
     val street: String,
     val city: String,
     val zip: String,
-    val country: String
+    val country: String,
+    val employeeId: Long,
 )

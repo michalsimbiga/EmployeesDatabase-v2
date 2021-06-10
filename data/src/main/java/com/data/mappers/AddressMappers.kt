@@ -9,7 +9,8 @@ fun AddressEntity.toDomain() =
         street = street,
         city = city,
         zip = zip,
-        country = country
+        country = country,
+        employeeId = employeeId
     )
 
 fun Address.toEntity() =
@@ -18,5 +19,6 @@ fun Address.toEntity() =
         street = street,
         city = city,
         zip = zip,
-        country = country
+        country = country,
+        employeeId = employeeId
     )
