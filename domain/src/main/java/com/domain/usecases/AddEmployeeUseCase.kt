@@ -16,7 +16,7 @@ class AddEmployeeUseCase @Inject constructor(
             lastName = params.lastName,
             age = params.age,
             gender = params.gender,
-            addressess = emptyList()
+            addresses = emptyList()
         )
         return repository.insertEmployee(employee)
     }

@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.model.AddressItem
 import com.core.extensions.empty
 import com.core.getDiffUtilCallback
-import com.prosoma.livingwell.databinding.ItemAddAddressBinding
-import com.prosoma.livingwell.databinding.ItemAddressBinding
-import com.prosoma.livingwell.databinding.ItemEditableAddressBinding
+import com.employeedatabase.databinding.ItemAddAddressBinding
+import com.employeedatabase.databinding.ItemAddressBinding
+import com.employeedatabase.databinding.ItemEditableAddressBinding
 
 class AddressesAdapter(
     private val onAddNewAddressClick: () -> Unit,

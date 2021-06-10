@@ -5,7 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.core.navigation.BaseActivityNavigator
 import com.domain.models.MainNavigator
-import com.prosoma.livingwell.R
+import com.employeedatabase.R
 import javax.inject.Inject
 
 class MainActivityNavigator @Inject constructor(

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.model.EmployeeItem
 import com.core.getDiffUtilCallback
-import com.prosoma.livingwell.databinding.ItemEmployeeBinding
+import com.employeedatabase.databinding.ItemEmployeeBinding
 
 class EmployeesAdapter(
     private val onEditClick: (EmployeeItem) -> Unit,

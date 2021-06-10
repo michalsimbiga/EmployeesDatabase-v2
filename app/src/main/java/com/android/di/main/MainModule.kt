@@ -1,10 +1,10 @@
-package com.prosoma.livingwell.di.main
+package com.android.di.main
 
 import androidx.lifecycle.ViewModel
-import com.core.viewmodels.ViewModelKey
-import com.domain.models.MainNavigator
 import com.android.presentation.main.MainActivityNavigator
 import com.android.presentation.main.MainViewModel
+import com.core.viewmodels.ViewModelKey
+import com.domain.models.MainNavigator
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

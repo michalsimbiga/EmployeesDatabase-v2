@@ -89,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
-            android:text="@{address.countryó}"
+            android:text="@{address.country}"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/countryHeaderTextView"
             app:layout_constraintTop_toTopOf="@id/countryHeaderTextView"

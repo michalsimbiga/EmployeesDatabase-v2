@@ -3,7 +3,7 @@ package com.android.presentation
 import com.android.di.InjectorApplication
 import com.core.analytics.ActivityAnalytics
 import com.core.analytics.ActivityCallbacksImpl
-import com.prosoma.livingwell.BuildConfig
+import com.employeedatabase.BuildConfig
 import timber.log.Timber
 
 class MainApplication : InjectorApplication() {

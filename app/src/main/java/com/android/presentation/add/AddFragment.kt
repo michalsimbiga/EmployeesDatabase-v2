@@ -10,8 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.android.di.add.AddInjector
 import com.core.ui.BaseFragment
-import com.prosoma.livingwell.R
-import com.prosoma.livingwell.databinding.FragmentEditBinding
+import com.employeedatabase.R
+import com.employeedatabase.databinding.FragmentEditBinding
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject

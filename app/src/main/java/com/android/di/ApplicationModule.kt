@@ -2,7 +2,7 @@ package com.android.di
 
 import android.app.Application
 import android.content.Context
-import com.prosoma.livingwell.di.main.MainModule
+import com.android.di.main.MainModule
 import dagger.Binds
 import dagger.Module
 

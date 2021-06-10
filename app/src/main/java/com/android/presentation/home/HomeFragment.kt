@@ -7,8 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.android.di.home.HomeInjector
 import com.core.ui.BaseFragment
-import com.prosoma.livingwell.R
-import com.prosoma.livingwell.databinding.FragmentHomeBinding
+import com.employeedatabase.R
+import com.employeedatabase.databinding.FragmentHomeBinding
 import javax.inject.Inject
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :

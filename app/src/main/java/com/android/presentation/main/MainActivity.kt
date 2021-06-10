@@ -5,9 +5,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.core.ui.BaseActivity
 import com.domain.models.MainNavigator
-import com.prosoma.livingwell.R
-import com.prosoma.livingwell.databinding.ActivityMainBinding
 import com.android.di.main.MainInjector
+import com.employeedatabase.R
+import com.employeedatabase.databinding.ActivityMainBinding
 import javax.inject.Inject
 
 class MainActivity(override val layoutId: Int = R.layout.activity_main) :
