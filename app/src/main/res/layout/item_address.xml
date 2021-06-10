@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="address"
+            type="com.android.model.AddressItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fragment_edit_address_item_layout_margin_10dp">
+
+        <TextView
+            android:id="@+id/streetHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_edit_address_header_margin_start_10dp"
+            android:text="@string/address_street_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/streetTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:text="@{address.street}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/streetHeaderTextView"
+            app:layout_constraintTop_toTopOf="@id/streetHeaderTextView"
+            tools:text="Sw. Macierewicza 11/4" />
+
+        <TextView
+            android:id="@+id/zipHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_zip_text"
+            app:layout_constraintStart_toStartOf="@id/streetHeaderTextView"
+            app:layout_constraintTop_toBottomOf="@id/streetHeaderTextView" />
+
+        <TextView
+            android:id="@+id/zipTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:text="@{address.zip}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/zipHeaderTextView"
+            app:layout_constraintTop_toTopOf="@id/zipHeaderTextView"
+            tools:text="55-211" />
+
+        <TextView
+            android:id="@+id/cityHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_edit_address_header_margin_start_10dp"
+            android:text="@string/address_city_text"
+            app:layout_constraintStart_toEndOf="@id/zipTextView"
+            app:layout_constraintTop_toTopOf="@id/zipHeaderTextView" />
+
+        <TextView
+            android:id="@+id/cityTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:text="@{address.city}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cityHeaderTextView"
+            app:layout_constraintTop_toTopOf="@id/cityHeaderTextView"
+            tools:text="Warszawa" />
+
+        <TextView
+            android:id="@+id/countryHeaderTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_country_text"
+            app:layout_constraintStart_toStartOf="@id/zipHeaderTextView"
+            app:layout_constraintTop_toBottomOf="@id/zipHeaderTextView" />
+
+        <TextView
+            android:id="@+id/countryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fragment_home_address_header_margin_start_10dp"
+            android:text="@{address.countryó}"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/countryHeaderTextView"
+            app:layout_constraintTop_toTopOf="@id/countryHeaderTextView"
+            tools:text="Polandball" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

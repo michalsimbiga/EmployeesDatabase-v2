@@ -11,7 +11,7 @@
   <string name="fragment_edit_addresses_header">Addresses Details</string>
   <string name="fragment_edit_gender_header">Gender</string>
 
-  <string name="fragment_edit_add_address_button_text">Add address</string>
+  <string name="add_address_button_text">Add address</string>
 
   <string name="fragment_edit_done_button_text">Done</string>
   <string name="fragment_edit_address_discard_button_text">Discard</string>

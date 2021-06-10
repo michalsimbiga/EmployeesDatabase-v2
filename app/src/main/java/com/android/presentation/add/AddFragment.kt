@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.android.di.add.AddInjector
-import com.android.presentation.home.EmployeesAdapter
 import com.core.ui.BaseFragment
 import com.prosoma.livingwell.R
 import com.prosoma.livingwell.databinding.FragmentEditBinding
@@ -30,6 +29,14 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
 
     private val viewModel: AddViewModel by viewModels { viewModelProviderFactory }
 
+    private val adapter by lazy {
+        AddressesAdapter(
+            onAddNewAddressClick = {},
+            onConfirmAddressClick = {},
+            onRemoveAddressClick = {},
+        )
+    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -43,7 +50,8 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
             val selectedRadioButtonId =
                 binding.editableEmployeeGenderRadioGroup.checkedRadioButtonId
             val selectedRadioText: String =
-                binding.root.findViewById<RadioButton>(selectedRadioButtonId)?.text?.toString() ?: ""
+                binding.root.findViewById<RadioButton>(selectedRadioButtonId)?.text?.toString()
+                    ?: ""
 
             viewModel.addEmployeeToDatabase(
                 binding.editableEmployeeFirstNameTextEdit.text.toString(),
@@ -51,6 +59,12 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
                 binding.editableEmployeeAgeTextEdit.text.toString().toInt(),
                 selectedRadioText
             )
+        }
+
+        lifecycleScope.launch {
+            viewModel.addressess.collect { addressViewType ->
+                adapter.submitList(addressViewType)
+            }
         }
 
         lifecycleScope.launch {

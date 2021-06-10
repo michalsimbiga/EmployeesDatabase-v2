@@ -42,7 +42,8 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         binding.addButton.setOnClickListener { navigator.navigateToAddFragment() }
         binding.rvEmployees.adapter = adapter
 
-        viewModel.employees.observe(viewLifecycleOwner) { it -> adapter.submitList(it) }
+        viewModel.employees.observe(viewLifecycleOwner) {
+                it -> adapter.submitList(it) }
 //        viewModel.uiState.collect { it -> adapter.submitList(it) }
     }
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.model.EmployeeItem
 import com.core.getDiffUtilCallback
-import com.prosoma.livingwell.databinding.ItemHomeEmployeeBinding
+import com.prosoma.livingwell.databinding.ItemEmployeeBinding
 
 class EmployeesAdapter(
     private val onEditClick: (EmployeeItem) -> Unit,
@@ -17,7 +17,7 @@ class EmployeesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemHomeEmployeeBinding.inflate(inflater, parent, false)
+        val binding = ItemEmployeeBinding.inflate(inflater, parent, false)
         return UserViewHolder(binding)
     }
 
@@ -26,7 +26,7 @@ class EmployeesAdapter(
     }
 
     inner class UserViewHolder(
-        private val binding: ItemHomeEmployeeBinding
+        private val binding: ItemEmployeeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: EmployeeItem) {
