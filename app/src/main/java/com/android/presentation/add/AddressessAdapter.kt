@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.model.AddressItem
+import com.core.extensions.empty
 import com.core.getDiffUtilCallback
 import com.prosoma.livingwell.databinding.ItemAddAddressBinding
 import com.prosoma.livingwell.databinding.ItemAddressBinding
@@ -67,11 +68,29 @@ class AddressesAdapter(
         fun bind() {
             binding.acceptAddressButton.setOnClickListener {
                 onConfirmAddressClick.invoke(constructAddress())
+                clear()
             }
-            binding.discardAddressButton.setOnClickListener { onRemoveAddressClick.invoke() }
+            binding.discardAddressButton.setOnClickListener {
+                onRemoveAddressClick.invoke()
+                clear()
+            }
         }
 
-        private fun constructAddress() = AddressItem(1, "asd")
+        private fun constructAddress() = AddressItem(
+            null,
+            binding.streetEditableEditText.text.toString(),
+            binding.cityEditableEditText.text.toString(),
+            binding.zipEditableEditText.text.toString(),
+            binding.countryEditableEditText.text.toString()
+        )
+
+        private fun clear() {
+            binding.streetEditableEditText.setText(String.empty)
+            binding.cityEditableEditText.setText(String.empty)
+            binding.zipEditableEditText.setText(String.empty)
+            binding.countryEditableEditText.setText(String.empty)
+        }
+
     }
 
     inner class FilledAddressViewHolder(
@@ -80,7 +99,5 @@ class AddressesAdapter(
         fun bind(address: AddressItem) {
             binding.address = address
         }
-
-        private fun constructAddress() = AddressItem(1, "asd")
     }
 }

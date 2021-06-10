@@ -2,6 +2,7 @@ package com.android.presentation.add
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import androidx.fragment.app.viewModels
@@ -31,9 +32,9 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
 
     private val adapter by lazy {
         AddressesAdapter(
-            onAddNewAddressClick = {},
-            onConfirmAddressClick = {},
-            onRemoveAddressClick = {},
+            onAddNewAddressClick = { viewModel.onAddNewAddressClicked() },
+            onConfirmAddressClick = { address -> viewModel.onConfirmAddressClicked(address) },
+            onRemoveAddressClick = { viewModel.onDiscardAddressClicked() },
         )
     }
 
@@ -61,8 +62,11 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
             )
         }
 
+        binding.rvEditAddresses.adapter = adapter
+
         lifecycleScope.launch {
             viewModel.addressess.collect { addressViewType ->
+                Log.d("VUKO", "Addressess $addressViewType")
                 adapter.submitList(addressViewType)
             }
         }

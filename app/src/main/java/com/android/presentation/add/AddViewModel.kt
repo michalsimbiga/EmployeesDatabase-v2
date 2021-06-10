@@ -3,6 +3,7 @@ package com.android.presentation.add
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.android.model.AddressItem
 import com.domain.usecases.AddEmployeeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,6 +41,31 @@ class AddViewModel @Inject constructor(
                 _navigation.value = true
             }
         )
+    }
+
+    fun onAddNewAddressClicked() {
+        val currentValue = _addressess.value.toMutableList().apply {
+            removeAll { it is AddressViewType.AddNew }
+            add(AddressViewType.Editable(AddressItem()))
+        }
+        _addressess.value = currentValue
+    }
+
+    fun onDiscardAddressClicked() {
+        val currentValue = _addressess.value.toMutableList().apply {
+            removeAll { it is AddressViewType.Editable }
+            add(AddressViewType.AddNew)
+        }
+        _addressess.value = currentValue
+    }
+
+    fun onConfirmAddressClicked(addressItem: AddressItem) {
+        val currentValue = _addressess.value.toMutableList().apply {
+            removeAll { it is AddressViewType.Editable }
+            add(AddressViewType.Filled(addressItem))
+            add(AddressViewType.AddNew)
+        }
+        _addressess.value = currentValue
     }
 
 

@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AddressItem(
-    val id: Int,
+    val id: Int? = null,
     val street: String = String.empty,
     val city: String = String.empty,
     val zip: String = String.empty,

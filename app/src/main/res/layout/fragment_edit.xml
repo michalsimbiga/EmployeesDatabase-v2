@@ -43,9 +43,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/editEmployeeFirstName"
             android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
-            android:hint="@string/second_name_hint">
+            android:hint="@string/second_name_hint"
+            app:layout_constraintTop_toBottomOf="@id/editEmployeeFirstName">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editableEmployeeLastNameTextEdit"
@@ -61,9 +61,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/editEmployeeLastName"
             android:layout_marginBottom="@dimen/fragment_edit_text_input_layout_margin_bottom_5dp"
-            android:hint="@string/age_name_hint">
+            android:hint="@string/age_name_hint"
+            app:layout_constraintTop_toBottomOf="@id/editEmployeeLastName">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editableEmployeeAgeTextEdit"
@@ -78,22 +78,22 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            app:layout_constraintTop_toBottomOf="@id/editEmployeeAge"
             android:id="@+id/editableEmployeeGenderHeader"
             style="@style/HeaderItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/fragment_edit_header_margin_bottom_10dp"
             android:text="@string/fragment_edit_gender_header"
+            app:layout_constraintTop_toBottomOf="@id/editEmployeeAge"
             tools:text="Example header" />
 
         <RadioGroup
             android:id="@+id/editableEmployeeGenderRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/editableEmployeeGenderHeader"
             android:focusable="true"
-            android:focusableInTouchMode="true">
+            android:focusableInTouchMode="true"
+            app:layout_constraintTop_toBottomOf="@id/editableEmployeeGenderHeader">
 
             <RadioButton
                 android:id="@+id/editableEmployeeNotDisclosedRadioButton"
@@ -114,6 +114,15 @@
                 android:text="@string/gender_female" />
 
         </RadioGroup>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvEditAddresses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editableEmployeeGenderRadioGroup"
+            tools:listitem="@layout/item_employee" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/addEmployeeButton"
