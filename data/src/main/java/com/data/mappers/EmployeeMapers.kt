@@ -5,17 +5,17 @@ import com.domain.models.Employee
 
 fun EmployeeEntity.toDomain() =
     Employee(
-        id = id,
+        id = employeeId,
         firstName = firstName,
         lastName = lastName,
         age = age,
         gender = gender,
-        addressess = listOf()
+        addresses = listOf()
     )
 
 fun Employee.toEntity() =
     EmployeeEntity(
-        id = id,
+        employeeId = id,
         firstName = firstName,
         lastName = lastName,
         age = age,

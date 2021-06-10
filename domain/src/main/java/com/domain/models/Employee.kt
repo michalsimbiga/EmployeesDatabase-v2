@@ -6,5 +6,5 @@ data class Employee(
     val lastName: String,
     val age: Int,
     val gender: String,
-    val addressess: List<Address>
+    val addresses: List<Address>
 )

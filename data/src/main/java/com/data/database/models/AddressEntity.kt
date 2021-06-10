@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class AddressEntity(
-    @PrimaryKey val id: Int?,
+    @PrimaryKey val addressId: Int?,
     val street: String,
     val city: String,
     val zip: String,
