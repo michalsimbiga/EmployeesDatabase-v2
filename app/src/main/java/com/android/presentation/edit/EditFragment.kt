@@ -7,6 +7,7 @@ import android.widget.RadioButton
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.android.di.add.AddInjector
 import com.core.ui.BaseFragment
 import com.employeedatabase.R
@@ -22,18 +23,20 @@ class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
         get() = baseActivity.application as AddInjector
 
     @Inject
-    lateinit var navigator: AddNavigator
+    lateinit var navigator: EditNavigator
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProvider.Factory
 
-    private val viewModel: EditViewModel by viewModels { viewModelProviderFactory }
+    private val args by navArgs<EditFragmentArgs>()
+
+    private val fragmentViewModel: EditViewModel by viewModels { viewModelProviderFactory }
 
     private val adapter by lazy {
         AddressesAdapter(
-            onAddNewAddressClick = { viewModel.onAddNewAddressClicked() },
-            onConfirmAddressClick = { address -> viewModel.onConfirmAddressClicked(address) },
-            onRemoveAddressClick = { viewModel.onDiscardAddressClicked() },
+            onAddNewAddressClick = { fragmentViewModel.onAddNewAddressClicked() },
+            onConfirmAddressClick = { address -> fragmentViewModel.onConfirmAddressClicked(address) },
+            onRemoveAddressClick = { fragmentViewModel.onDiscardAddressClicked() },
         )
     }
 
@@ -51,36 +54,38 @@ class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
     }
 
     private fun setupView() {
-        binding.rvEditAddresses.adapter = adapter
+        args.employee?.let { fragmentViewModel.setEditMode(it) }
+
+        with(binding) {
+            rvEditAddresses.adapter = adapter
+            viewModel = fragmentViewModel
+        }
     }
 
     private fun setupListeners() = with(binding) {
 
-        addEmployeeButton.setOnClickListener {
-            val selectedRadioButtonId =
-                editableEmployeeGenderRadioGroup.checkedRadioButtonId
+        editableEmployeeGenderRadioGroup.setOnCheckedChangeListener { group, checkedId ->
             val selectedRadioText: String =
-                root.findViewById<RadioButton>(selectedRadioButtonId)?.text?.toString() ?: ""
+                root.findViewById<RadioButton>(checkedId)?.text?.toString() ?: ""
 
-            viewModel.addEmployeeToDatabase(
-                editableEmployeeFirstNameTextEdit.text.toString(),
-                editableEmployeeLastNameTextEdit.text.toString(),
-                editableEmployeeAgeTextEdit.text.toString().toInt(),
-                selectedRadioText
-            )
+            fragmentViewModel.updateGender(selectedRadioText)
+        }
+
+        addEmployeeButton.setOnClickListener {
+            fragmentViewModel.addEmployeeToDatabase()
         }
     }
 
     private fun setupObservers() {
 
         lifecycleScope.launch {
-            viewModel.addressess.collect { addressViewType ->
+            fragmentViewModel.addressess.collect { addressViewType ->
                 adapter.submitList(addressViewType)
             }
         }
 
         lifecycleScope.launch {
-            viewModel.navigation.collect { navigate ->
+            fragmentViewModel.navigation.collect { navigate ->
                 if (navigate) navigator.navigateToHome()
             }
         }

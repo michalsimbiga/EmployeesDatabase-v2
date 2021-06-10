@@ -7,18 +7,10 @@ import javax.inject.Inject
 
 class AddEmployeeUseCase @Inject constructor(
     private val repository: EmployeesRepository
-) : UseCase<AddEmployeeUseCase.AddEmployeeParams, Long>() {
+) : UseCase<Employee, Long>() {
 
-    override suspend fun run(params: AddEmployeeParams): Long {
-        val employee = Employee(
-            id = null,
-            firstName = params.name,
-            lastName = params.lastName,
-            age = params.age,
-            gender = params.gender,
-            addresses = emptyList()
-        )
-        return repository.insertEmployee(employee)
+    override suspend fun run(params: Employee): Long {
+        return repository.insertEmployee(params)
     }
 
     data class AddEmployeeParams(

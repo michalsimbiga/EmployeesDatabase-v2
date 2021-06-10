@@ -15,10 +15,4 @@ class MainActivityNavigator @Inject constructor(
     override val navController: NavController
         get() = activity.findNavController(R.id.navHostFragment)
 
-    override fun showFirstDialog() {
-//        navigate(
-//            R.id.action_global_firstDialogFragment,
-//            bundleOf(ARG_DIALOG_REQUEST to REQUEST_ACCEPT_TERMS)
-//        )
-    }
 }

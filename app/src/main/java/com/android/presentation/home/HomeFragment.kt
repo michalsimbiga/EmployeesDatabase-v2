@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.android.di.home.HomeInjector
 import com.core.ui.BaseFragment
 import com.employeedatabase.R
 import com.employeedatabase.databinding.FragmentHomeBinding
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
@@ -23,10 +26,10 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     @Inject
     lateinit var navigator: HomeNavigator
 
-    private val viewModel: HomeViewModel by viewModels { viewModelProviderFactory }
+    private val fragmentViewModel: HomeViewModel by viewModels { viewModelProviderFactory }
     private val adapter: EmployeesAdapter by lazy {
         EmployeesAdapter(
-            onDeleteClick = { employee -> viewModel.deleteEmployee(employee = employee) },
+            onDeleteClick = { employee -> fragmentViewModel.deleteEmployee(employee = employee) },
             onEditClick = { employee -> navigator.navigateToAddFragmentWithEmployee(employee) }
         )
     }
@@ -39,12 +42,23 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.addButton.setOnClickListener { navigator.navigateToAddFragment() }
-        binding.rvEmployees.adapter = adapter
+        setupView()
+        setupListeners()
+        setupObservers()
+    }
 
-        viewModel.employees.observe(viewLifecycleOwner) {
-                it -> adapter.submitList(it) }
-//        viewModel.uiState.collect { it -> adapter.submitList(it) }
+    private fun setupView() {
+        binding.rvEmployees.adapter = adapter
+    }
+
+    private fun setupListeners() = with(binding) {
+        addButton.setOnClickListener { navigator.navigateToAddFragment() }
+    }
+
+    private fun setupObservers() {
+        lifecycleScope.launch {
+            fragmentViewModel.uiState.collect { adapter.submitList(it) }
+        }
     }
 
     override fun onDestroyView() {
