@@ -47,4 +47,9 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
 //        viewModel.uiState.collect { it -> adapter.submitList(it) }
     }
 
+    override fun onDestroyView() {
+        binding.rvEmployees.adapter = null
+        super.onDestroyView()
+    }
+
 }

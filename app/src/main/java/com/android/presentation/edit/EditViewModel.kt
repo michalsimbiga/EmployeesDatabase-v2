@@ -1,4 +1,4 @@
-package com.android.presentation.add
+package com.android.presentation.edit
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -10,9 +10,10 @@ import com.domain.usecases.AddEmployeeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import timber.log.Timber
 import javax.inject.Inject
 
-class AddViewModel @Inject constructor(
+class EditViewModel @Inject constructor(
     private val addEmployeeUseCase: AddEmployeeUseCase,
     private val addAddressUseCase: AddAddressUseCase
 ) : ViewModel() {
@@ -45,18 +46,16 @@ class AddViewModel @Inject constructor(
     }
 
     private fun addAddressesToDb(employeeId: Long) {
-        val addresses = _addressess.value.filterIsInstance<AddressViewType.Filled>()
-
-        addresses.forEach { address ->
-            addAddressUseCase(
-                viewModelScope,
-                dispatcher = Dispatchers.IO,
-                address.address
-                    .copy(employeeId = employeeId)
-                    .toDomain(),
-                onSuccess = { if (address == addresses.last()) _navigation.value = true }
-            )
+        val addresses = _addressess.value.filterIsInstance<AddressViewType.Filled>().map {
+            it.address.copy(employeeId = employeeId).toDomain()
         }
+
+        addAddressUseCase(
+            viewModelScope,
+            dispatcher = Dispatchers.IO,
+            addresses,
+            onSuccess = { _navigation.value = true }
+        )
     }
 
     fun onAddNewAddressClicked() {

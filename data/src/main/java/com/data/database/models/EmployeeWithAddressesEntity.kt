@@ -8,7 +8,7 @@ data class EmployeeWithAddressesEntity(
 
     @Relation(
         parentColumn = "employeeId",
-        entityColumn = "addressId"
+        entityColumn = "employeeId"
     )
     val addresses: List<AddressEntity>
 )

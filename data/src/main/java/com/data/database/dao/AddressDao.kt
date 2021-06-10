@@ -9,6 +9,9 @@ interface AddressDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAddress(address: AddressEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAddresses(vararg addresses: AddressEntity)
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateAddress(address: AddressEntity)
 

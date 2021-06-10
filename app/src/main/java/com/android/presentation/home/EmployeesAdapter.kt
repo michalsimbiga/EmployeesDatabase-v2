@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.model.EmployeeItem
-import com.android.presentation.add.AddressViewType
-import com.android.presentation.add.AddressesAdapter
+import com.android.presentation.edit.AddressViewType
+import com.android.presentation.edit.AddressesAdapter
 import com.core.getDiffUtilCallback
 import com.employeedatabase.databinding.ItemEmployeeBinding
 

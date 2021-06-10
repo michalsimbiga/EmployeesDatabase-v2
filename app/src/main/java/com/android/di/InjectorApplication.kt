@@ -5,7 +5,7 @@ import com.android.di.add.AddInjector
 import com.android.di.home.HomeInjector
 import com.android.di.main.MainComponent
 import com.android.di.main.MainInjector
-import com.android.presentation.add.AddFragment
+import com.android.presentation.edit.EditFragment
 import com.android.presentation.home.HomeFragment
 import com.android.presentation.main.MainActivity
 
@@ -43,7 +43,7 @@ open class InjectorApplication : Application(),
             ?.inject(fragment) ?: throw IllegalStateException()
     }
 
-    override fun inject(fragment: AddFragment) {
+    override fun inject(fragment: EditFragment) {
         mainComponent?.addComponentFactory()
             ?.bindFragment(fragment)
             ?.inject(fragment) ?: throw IllegalStateException()

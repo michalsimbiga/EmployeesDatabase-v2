@@ -1,4 +1,4 @@
-package com.android.presentation.add
+package com.android.presentation.edit
 
 import androidx.fragment.app.Fragment
 import com.core.navigation.BaseFragmentNavigator
@@ -9,6 +9,6 @@ class AddNavigator @Inject constructor(
 ) : BaseFragmentNavigator(fragment) {
 
     fun navigateToHome() {
-        navigate(AddFragmentDirections.actionAddToHome())
+        navigate(EditFragmentDirections.actionAddToHome())
     }
 }

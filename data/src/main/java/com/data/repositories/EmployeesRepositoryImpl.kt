@@ -6,10 +6,7 @@ import com.data.mappers.toEntity
 import com.domain.models.Address
 import com.domain.models.Employee
 import com.domain.repositories.EmployeesRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -19,6 +16,7 @@ class EmployeesRepositoryImpl @Inject constructor(private val database: Applicat
 
     override suspend fun getAllEmployees(): Flow<List<Employee>> =
         database.employeesDao().getAllEmployees()
+//            .also { Timber.d("VUKO employee ${it.toList()}") }
             .map { it.map { employeeWithAddressesEntity -> employeeWithAddressesEntity.toDomain() } }
 
     override suspend fun insertEmployee(employee: Employee): Long =
@@ -33,6 +31,6 @@ class EmployeesRepositoryImpl @Inject constructor(private val database: Applicat
     override suspend fun deleteAddress(address: Address): Unit =
         database.addressDao().deleteAddress(address = address.toEntity())
 
-    override suspend fun insertAddress(address: Address): Unit =
-        database.addressDao().insertAddress(address = address.toEntity())
+    override suspend fun insertAddresses(addresses: List<Address>): Unit =
+        database.addressDao().insertAddresses(addresses = addresses.map { it.toEntity() }.toTypedArray())
 }

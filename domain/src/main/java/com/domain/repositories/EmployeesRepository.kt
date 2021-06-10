@@ -11,5 +11,5 @@ interface EmployeesRepository {
     suspend fun updateEmployee(employee: Employee): Unit
     suspend fun deleteEmployee(employee: Employee): Unit
     suspend fun deleteAddress(address: Address): Unit
-    suspend fun insertAddress(address: Address): Unit
+    suspend fun insertAddresses(addresses: List<Address>): Unit
 }

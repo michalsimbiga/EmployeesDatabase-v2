@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.android.presentation.add.AddFragment"
+        android:name="com.android.presentation.edit.EditFragment"
         android:label="AddFragment"
         tools:layout="@layout/fragment_edit">
 

@@ -1,8 +1,8 @@
 package com.android.di.add
 
-import com.android.presentation.add.AddFragment
+import com.android.presentation.edit.EditFragment
 
 interface AddInjector {
 
-    fun inject(fragment: AddFragment)
+    fun inject(fragment: EditFragment)
 }

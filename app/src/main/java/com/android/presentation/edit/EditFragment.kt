@@ -1,8 +1,7 @@
-package com.android.presentation.add
+package com.android.presentation.edit
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import androidx.fragment.app.viewModels
@@ -16,7 +15,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
+class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
     BaseFragment<FragmentEditBinding>() {
 
     private val injector: AddInjector
@@ -28,7 +27,7 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProvider.Factory
 
-    private val viewModel: AddViewModel by viewModels { viewModelProviderFactory }
+    private val viewModel: EditViewModel by viewModels { viewModelProviderFactory }
 
     private val adapter by lazy {
         AddressesAdapter(
@@ -55,19 +54,18 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
         binding.rvEditAddresses.adapter = adapter
     }
 
-    private fun setupListeners() {
+    private fun setupListeners() = with(binding) {
 
-        binding.addEmployeeButton.setOnClickListener {
+        addEmployeeButton.setOnClickListener {
             val selectedRadioButtonId =
-                binding.editableEmployeeGenderRadioGroup.checkedRadioButtonId
+                editableEmployeeGenderRadioGroup.checkedRadioButtonId
             val selectedRadioText: String =
-                binding.root.findViewById<RadioButton>(selectedRadioButtonId)?.text?.toString()
-                    ?: ""
+                root.findViewById<RadioButton>(selectedRadioButtonId)?.text?.toString() ?: ""
 
             viewModel.addEmployeeToDatabase(
-                binding.editableEmployeeFirstNameTextEdit.text.toString(),
-                binding.editableEmployeeLastNameTextEdit.text.toString(),
-                binding.editableEmployeeAgeTextEdit.text.toString().toInt(),
+                editableEmployeeFirstNameTextEdit.text.toString(),
+                editableEmployeeLastNameTextEdit.text.toString(),
+                editableEmployeeAgeTextEdit.text.toString().toInt(),
                 selectedRadioText
             )
         }
@@ -77,7 +75,6 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
 
         lifecycleScope.launch {
             viewModel.addressess.collect { addressViewType ->
-                Log.d("VUKO", "Addressess $addressViewType")
                 adapter.submitList(addressViewType)
             }
         }
@@ -87,6 +84,10 @@ class AddFragment(override val layoutId: Int = R.layout.fragment_edit) :
                 if (navigate) navigator.navigateToHome()
             }
         }
+    }
 
+    override fun onDestroyView() {
+        binding.rvEditAddresses.adapter = null
+        super.onDestroyView()
     }
 }
