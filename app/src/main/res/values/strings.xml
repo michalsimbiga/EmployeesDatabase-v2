@@ -35,5 +35,6 @@
 
   <!--  Snackbar Messages  -->
   <string name="operation_successful">Success</string>
+  <string name="invalid_data">Invalid data</string>
   <string name="operation_unsuccessful">Something failed, please try again</string>
 </resources>

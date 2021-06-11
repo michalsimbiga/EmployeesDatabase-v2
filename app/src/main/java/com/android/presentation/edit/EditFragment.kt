@@ -73,14 +73,14 @@ class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
 
         buttonEditDone.setOnClickListener {
             if (validateData()) fragmentViewModel.addEmployeeToDatabase()
-            else Toast.makeText(context, "Invalid data", Toast.LENGTH_SHORT).show()
+            else Toast.makeText(context, R.string.invalid_data, Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun validateData(): Boolean = with(binding) {
-        return textEditAge.text.toString().isNotEmpty() &&
-                textEditFirstName.text.toString().isNotEmpty() &&
-                textEditLastName.text.toString().isNotEmpty()
+        return textEditAge.text.toString().isNotBlank() &&
+                textEditFirstName.text.toString().isNotBlank() &&
+                textEditLastName.text.toString().isNotBlank()
     }
 
     private fun setupObservers() {

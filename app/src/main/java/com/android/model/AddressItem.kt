@@ -13,7 +13,11 @@ data class AddressItem(
     val zip: String = String.empty,
     val country: String = String.empty,
     val employeeId: Long = -1
-) : Parcelable
+) : Parcelable {
+
+    fun isNotEmpty() =
+        street.isNotBlank() && city.isNotBlank() && country.isNotBlank() && zip.isNotEmpty()
+}
 
 fun AddressItem.toDomain() =
     Address(

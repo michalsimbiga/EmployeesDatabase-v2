@@ -2,11 +2,13 @@ package com.android.presentation.edit
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.model.AddressItem
 import com.core.extensions.empty
 import com.core.getDiffUtilCallback
+import com.employeedatabase.R
 import com.employeedatabase.databinding.ItemAddAddressBinding
 import com.employeedatabase.databinding.ItemAddressBinding
 import com.employeedatabase.databinding.ItemEditableAddressBinding
@@ -68,8 +70,14 @@ class AddressesAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             binding.buttonEditableConfirm.setOnClickListener {
-                onConfirmAddressClick.invoke(constructAddress())
-                clear()
+                val address = constructAddress()
+                if (address.isNotEmpty()) {
+                    onConfirmAddressClick.invoke(address)
+                    clear()
+                } else {
+                    Toast.makeText(binding.root.context, R.string.invalid_data, Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
             binding.buttonEditableDiscard.setOnClickListener {
                 onRemoveAddressClick.invoke()
