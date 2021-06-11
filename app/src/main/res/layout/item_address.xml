@@ -16,7 +16,7 @@
         android:layout_margin="@dimen/margin_medium">
 
         <TextView
-            android:id="@+id/streetHeaderTextView"
+            android:id="@+id/textAddressStreetLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
@@ -25,74 +25,74 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/streetTextView"
+            android:id="@+id/textAddressStreet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.street}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/streetHeaderTextView"
-            app:layout_constraintTop_toTopOf="@id/streetHeaderTextView"
+            app:layout_constraintStart_toEndOf="@id/textAddressStreetLabel"
+            app:layout_constraintTop_toTopOf="@id/textAddressStreetLabel"
             tools:text="Sw. Macierewicza 11/4" />
 
         <TextView
-            android:id="@+id/zipHeaderTextView"
+            android:id="@+id/textAddressZipLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address_zip_text"
-            app:layout_constraintStart_toStartOf="@id/streetHeaderTextView"
-            app:layout_constraintTop_toBottomOf="@id/streetHeaderTextView" />
+            app:layout_constraintStart_toStartOf="@id/textAddressStreetLabel"
+            app:layout_constraintTop_toBottomOf="@id/textAddressStreetLabel" />
 
         <TextView
-            android:id="@+id/zipTextView"
+            android:id="@+id/textAddressZip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.zip}"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/zipHeaderTextView"
-            app:layout_constraintTop_toTopOf="@id/zipHeaderTextView"
+            app:layout_constraintStart_toEndOf="@id/textAddressZipLabel"
+            app:layout_constraintTop_toTopOf="@id/textAddressZipLabel"
             tools:text="55-211" />
 
         <TextView
-            android:id="@+id/cityHeaderTextView"
+            android:id="@+id/textAddressCityLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/address_city_text"
-            app:layout_constraintStart_toEndOf="@id/zipTextView"
-            app:layout_constraintTop_toTopOf="@id/zipHeaderTextView" />
+            app:layout_constraintStart_toEndOf="@id/textAddressZip"
+            app:layout_constraintTop_toTopOf="@id/textAddressZipLabel" />
 
         <TextView
-            android:id="@+id/cityTextView"
+            android:id="@+id/textAddressCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.city}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/cityHeaderTextView"
-            app:layout_constraintTop_toTopOf="@id/cityHeaderTextView"
+            app:layout_constraintStart_toEndOf="@id/textAddressCityLabel"
+            app:layout_constraintTop_toTopOf="@id/textAddressCityLabel"
             tools:text="Warszawa" />
 
         <TextView
-            android:id="@+id/countryHeaderTextView"
+            android:id="@+id/textAddressCountryLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address_country_text"
-            app:layout_constraintStart_toStartOf="@id/zipHeaderTextView"
-            app:layout_constraintTop_toBottomOf="@id/zipHeaderTextView" />
+            app:layout_constraintStart_toStartOf="@id/textAddressZipLabel"
+            app:layout_constraintTop_toBottomOf="@id/textAddressZipLabel" />
 
         <TextView
-            android:id="@+id/countryTextView"
+            android:id="@+id/textAddressCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@{address.country}"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/countryHeaderTextView"
-            app:layout_constraintTop_toTopOf="@id/countryHeaderTextView"
+            app:layout_constraintStart_toEndOf="@id/textAddressCountryLabel"
+            app:layout_constraintTop_toTopOf="@id/textAddressCountryLabel"
             tools:text="Polandball" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

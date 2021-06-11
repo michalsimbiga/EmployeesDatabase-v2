@@ -15,23 +15,23 @@
         android:layout_height="wrap_content">
 
         <ImageButton
-            android:id="@+id/homeEditEmployeeButton"
+            android:id="@+id/buttonEmployeeEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-            app:layout_constraintEnd_toStartOf="@id/homeDeleteEmployeeButton"
+            app:layout_constraintEnd_toStartOf="@id/buttonEmployeeDelete"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/homeDeleteEmployeeButton"
+            android:id="@+id/buttonEmployeeDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_delete"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/homeEditEmployeeButton" />
+            app:layout_constraintTop_toTopOf="@id/buttonEmployeeEdit" />
 
         <TextView
-            android:id="@+id/homeEmployeeNameHeader"
+            android:id="@+id/textEmployeeNameLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
@@ -40,67 +40,67 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/homeEmployeeName"
+            android:id="@+id/textEmployeeName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@{employee.firstName + ` ` + employee.lastName}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/homeEmployeeNameHeader"
-            app:layout_constraintTop_toTopOf="@id/homeEmployeeNameHeader"
+            app:layout_constraintStart_toEndOf="@id/textEmployeeNameLabel"
+            app:layout_constraintTop_toTopOf="@id/textEmployeeNameLabel"
             tools:text="Antonii Macierewicz" />
 
         <TextView
-            android:id="@+id/homeEmployeeAgeHeader"
+            android:id="@+id/textEmployeeAgeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/employee_age"
-            app:layout_constraintStart_toStartOf="@id/homeEmployeeNameHeader"
-            app:layout_constraintTop_toBottomOf="@id/homeEmployeeNameHeader" />
+            app:layout_constraintStart_toStartOf="@id/textEmployeeNameLabel"
+            app:layout_constraintTop_toBottomOf="@id/textEmployeeNameLabel" />
 
         <TextView
-            android:id="@+id/homeEmployeeAge"
+            android:id="@+id/textEmployeeAge"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@{String.valueOf(employee.age)}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/homeEmployeeAgeHeader"
-            app:layout_constraintTop_toTopOf="@id/homeEmployeeAgeHeader"
+            app:layout_constraintStart_toEndOf="@id/textEmployeeAgeLabel"
+            app:layout_constraintTop_toTopOf="@id/textEmployeeAgeLabel"
             tools:text="60" />
 
         <TextView
-            android:id="@+id/homeEmployeeGenderHeader"
+            android:id="@+id/textEmployeeGenderHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/employee_gender"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/homeEmployeeAgeHeader" />
+            app:layout_constraintTop_toBottomOf="@id/textEmployeeAgeLabel" />
 
         <TextView
-            android:id="@+id/homeEmployeeGender"
+            android:id="@+id/textEmployeeGender"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:text="@{employee.gender}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/homeEmployeeGenderHeader"
-            app:layout_constraintTop_toTopOf="@id/homeEmployeeGenderHeader"
+            app:layout_constraintStart_toEndOf="@id/textEmployeeGenderHeader"
+            app:layout_constraintTop_toTopOf="@id/textEmployeeGenderHeader"
             tools:text="Pikachu" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvEmployeeAddresses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:itemCount="2"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/homeEmployeeGender"
+            app:layout_constraintTop_toBottomOf="@id/textEmployeeGender"
+            tools:itemCount="2"
             tools:listitem="@layout/item_address" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

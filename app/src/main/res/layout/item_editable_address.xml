@@ -7,7 +7,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/streetEditableInputLayout"
+            android:id="@+id/layoutEditableStreet"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/streetEditableEditText"
+                android:id="@+id/textEditableStreet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -26,17 +26,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cityEditableInputLayout"
+            android:id="@+id/layoutEditableCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
             android:hint="@string/address_city_text"
-            app:layout_constraintEnd_toEndOf="@id/streetEditableInputLayout"
-            app:layout_constraintStart_toStartOf="@id/streetEditableInputLayout"
-            app:layout_constraintTop_toBottomOf="@id/streetEditableInputLayout">
+            app:layout_constraintEnd_toEndOf="@id/layoutEditableStreet"
+            app:layout_constraintStart_toStartOf="@id/layoutEditableStreet"
+            app:layout_constraintTop_toBottomOf="@id/layoutEditableStreet">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cityEditableEditText"
+                android:id="@+id/textEditableCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -45,17 +45,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/zipEditableInputLayout"
+            android:id="@+id/layoutEditableZip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
             android:hint="@string/address_zip_text"
-            app:layout_constraintEnd_toEndOf="@id/cityEditableInputLayout"
-            app:layout_constraintStart_toStartOf="@id/cityEditableInputLayout"
-            app:layout_constraintTop_toBottomOf="@id/cityEditableInputLayout">
+            app:layout_constraintEnd_toEndOf="@id/layoutEditableCity"
+            app:layout_constraintStart_toStartOf="@id/layoutEditableCity"
+            app:layout_constraintTop_toBottomOf="@id/layoutEditableCity">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/zipEditableEditText"
+                android:id="@+id/textEditableZip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
@@ -64,17 +64,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/countryEditableInputLayout"
+            android:id="@+id/layoutEditableCountry"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_medium"
             android:hint="@string/address_country_text"
-            app:layout_constraintEnd_toEndOf="@id/zipEditableInputLayout"
-            app:layout_constraintStart_toStartOf="@id/zipEditableInputLayout"
-            app:layout_constraintTop_toBottomOf="@id/zipEditableInputLayout">
+            app:layout_constraintEnd_toEndOf="@id/layoutEditableZip"
+            app:layout_constraintStart_toStartOf="@id/layoutEditableZip"
+            app:layout_constraintTop_toBottomOf="@id/layoutEditableZip">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/countryEditableEditText"
+                android:id="@+id/textEditableCountry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
@@ -83,22 +83,22 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/discardAddressButton"
+            android:id="@+id/buttonEditableDiscard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/fragment_edit_address_discard_button_text"
-            app:layout_constraintEnd_toStartOf="@id/acceptAddressButton"
-            app:layout_constraintTop_toBottomOf="@id/countryEditableInputLayout" />
+            app:layout_constraintStart_toEndOf="@id/buttonEditableConfirm"
+            app:layout_constraintTop_toBottomOf="@id/layoutEditableCountry" />
 
         <Button
-            android:id="@+id/acceptAddressButton"
+            android:id="@+id/buttonEditableConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
             android:text="@string/fragment_edit_address_add_button_text"
-            app:layout_constraintEnd_toEndOf="@id/countryEditableInputLayout"
-            app:layout_constraintTop_toBottomOf="@id/countryEditableInputLayout" />
+            app:layout_constraintStart_toStartOf="@id/layoutEditableCountry"
+            app:layout_constraintTop_toBottomOf="@id/layoutEditableCountry" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
