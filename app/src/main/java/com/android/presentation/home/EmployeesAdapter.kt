@@ -31,16 +31,15 @@ class EmployeesAdapter(
         private val binding: ItemEmployeeBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        private val adapter = AddressesAdapter({},{},{})
+        private val adapter = AddressesAdapter()
 
         fun bind(data: EmployeeItem) {
             with(binding) {
                 rvEmployeeAddresses.adapter = adapter
                 adapter.submitList(data.addressess.map { AddressViewType.Filled(it) })
-
                 employee = data
-                homeDeleteEmployeeButton.setOnClickListener { onDeleteClick.invoke(data) }
-                homeEditEmployeeButton.setOnClickListener { onEditClick.invoke(data) }
+                buttonEmployeeDelete.setOnClickListener { onDeleteClick.invoke(data) }
+                buttonEmployeeEdit.setOnClickListener { onEditClick.invoke(data) }
             }
         }
     }

@@ -21,7 +21,6 @@ ext {
             timber              : '4.7.1',
             appCenter           : '3.3.1',
             leakCanary          : '2.5',
-            glide               : '4.11.0',
-            epoxy               : '3.9.0'
+            ktlint              : '0.29.0',
     ]
 }

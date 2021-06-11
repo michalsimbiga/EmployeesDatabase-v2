@@ -52,12 +52,12 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
     }
 
     private fun setupListeners() = with(binding) {
-        addButton.setOnClickListener { navigator.navigateToAddFragment() }
+        buttonHomeAdd.setOnClickListener { navigator.navigateToAddFragment() }
     }
 
     private fun setupObservers() {
         lifecycleScope.launch {
-            fragmentViewModel.uiState.collect { adapter.submitList(it) }
+            fragmentViewModel.employees.collect { adapter.submitList(it) }
         }
     }
 
@@ -65,5 +65,4 @@ class HomeFragment(override val layoutId: Int = R.layout.fragment_home) :
         binding.rvEmployees.adapter = null
         super.onDestroyView()
     }
-
 }

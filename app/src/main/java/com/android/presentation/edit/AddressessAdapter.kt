@@ -11,10 +11,11 @@ import com.employeedatabase.databinding.ItemAddAddressBinding
 import com.employeedatabase.databinding.ItemAddressBinding
 import com.employeedatabase.databinding.ItemEditableAddressBinding
 
+
 class AddressesAdapter(
-    private val onAddNewAddressClick: () -> Unit,
-    private val onConfirmAddressClick: (AddressItem) -> Unit,
-    private val onRemoveAddressClick: () -> Unit,
+    private val onAddNewAddressClick: () -> Unit = {},
+    private val onConfirmAddressClick: (AddressItem) -> Unit = {},
+    private val onRemoveAddressClick: () -> Unit = {}
 ) : ListAdapter<AddressViewType, RecyclerView.ViewHolder>(
     getDiffUtilCallback { oldItem, newItem -> oldItem == newItem }
 ) {
@@ -66,31 +67,32 @@ class AddressesAdapter(
         private val binding: ItemEditableAddressBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind() {
-            binding.acceptAddressButton.setOnClickListener {
+            binding.buttonEditableConfirm.setOnClickListener {
                 onConfirmAddressClick.invoke(constructAddress())
                 clear()
             }
-            binding.discardAddressButton.setOnClickListener {
+            binding.buttonEditableDiscard.setOnClickListener {
                 onRemoveAddressClick.invoke()
                 clear()
             }
         }
 
-        private fun constructAddress() = AddressItem(
-            null,
-            binding.streetEditableEditText.text.toString(),
-            binding.cityEditableEditText.text.toString(),
-            binding.zipEditableEditText.text.toString(),
-            binding.countryEditableEditText.text.toString()
-        )
-
-        private fun clear() {
-            binding.streetEditableEditText.setText(String.empty)
-            binding.cityEditableEditText.setText(String.empty)
-            binding.zipEditableEditText.setText(String.empty)
-            binding.countryEditableEditText.setText(String.empty)
+        private fun constructAddress(): AddressItem = with(binding) {
+            return AddressItem(
+                null,
+                textEditableStreet.text.toString(),
+                textEditableCity.text.toString(),
+                textEditableZip.text.toString(),
+                textEditableCountry.text.toString()
+            )
         }
 
+        private fun clear() = with(binding) {
+            textEditableStreet.setText(String.empty)
+            textEditableCity.setText(String.empty)
+            textEditableZip.setText(String.empty)
+            textEditableCountry.setText(String.empty)
+        }
     }
 
     inner class FilledAddressViewHolder(

@@ -7,19 +7,13 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class EmployeeItem(
-    val id: Int? = null ,
+    val id: Int? = null,
     val firstName: String = String.empty,
     val lastName: String = String.empty,
     val age: Int = -1,
     val gender: String = String.empty,
     val addressess: List<AddressItem> = listOf()
-) : Parcelable {
-    fun isEmpty() =
-        firstName.trim() == String.empty &&
-                lastName.trim() == String.empty &&
-                age == -1 &&
-                gender.trim() == String.empty
-}
+) : Parcelable
 
 fun Employee.toItem() =
     EmployeeItem(
@@ -38,5 +32,5 @@ fun EmployeeItem.toDomain() =
         lastName = lastName,
         age = age,
         gender = gender,
-        addresses =  emptyList()
+        addresses = emptyList()
     )

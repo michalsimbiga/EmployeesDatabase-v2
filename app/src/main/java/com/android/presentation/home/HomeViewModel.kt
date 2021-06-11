@@ -1,8 +1,5 @@
 package com.android.presentation.home
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.model.EmployeeItem
@@ -19,7 +16,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 class HomeViewModel @Inject constructor(
     private val getAllEmployeesUseCase: GetEmployeesUseCase,
     private val deleteEmployeeUseCase: DeleteEmployeeUseCase
@@ -29,19 +25,15 @@ class HomeViewModel @Inject constructor(
         getAllEmployees()
     }
 
-    private val _uiState: MutableStateFlow<List<EmployeeItem>> = MutableStateFlow(emptyList())
-    val uiState: StateFlow<List<EmployeeItem>> = _uiState
-
-    private val _employees = MutableLiveData<List<EmployeeItem>>()
-    val employees: LiveData<List<EmployeeItem>> = _employees
+    private val _employees: MutableStateFlow<List<EmployeeItem>> = MutableStateFlow(emptyList())
+    val employees: StateFlow<List<EmployeeItem>> = _employees
 
     fun deleteEmployee(employee: EmployeeItem) {
         deleteEmployeeUseCase(
             viewModelScope,
             Dispatchers.Default,
             employee.toDomain(),
-            onSuccess = { getAllEmployees() },
-            onFailure = {}
+            onSuccess = { getAllEmployees() }
         )
     }
 
@@ -50,22 +42,14 @@ class HomeViewModel @Inject constructor(
             viewModelScope,
             Dispatchers.IO,
             Unit,
-            onSuccess = ::onSuccess,
-            onFailure = {
-                Log.d("VUKO", "Not Got from db $it")
-            }
+            onSuccess = ::onSuccess
         )
 
     private fun onSuccess(flow: Flow<List<Employee>>) {
-        Log.d("VUKO", "Got from db $flow")
         viewModelScope.launch {
             flow.collect {
-                Log.d("VUKO", "Got from db collect $it")
-                _uiState.value = it.map { employee -> employee.toItem() }
                 _employees.value = it.map { employee -> employee.toItem() }
             }
         }
     }
-
-
 }

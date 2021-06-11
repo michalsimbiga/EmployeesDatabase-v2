@@ -14,5 +14,4 @@ class MainActivityNavigator @Inject constructor(
 
     override val navController: NavController
         get() = activity.findNavController(R.id.navHostFragment)
-
 }

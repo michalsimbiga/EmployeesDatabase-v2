@@ -48,7 +48,7 @@ class EditViewModel @Inject constructor(
                 viewModelScope,
                 Dispatchers.IO,
                 employee,
-                onSuccess = { employeeId -> addAddressesToDb(employeeId) },
+                onSuccess = { employeeId -> addAddressesToDb(employeeId) }
             )
         } else {
             updateEmployeeUseCase(
@@ -66,14 +66,16 @@ class EditViewModel @Inject constructor(
     }
 
     fun setEditMode(employee: EmployeeItem) {
-        savedEmployee = employee
-        firstName.value = employee.firstName
-        lastName.value = employee.lastName
-        age.value = employee.age.toString()
-        gender = employee.gender
+        if (savedEmployee == null) {
+            savedEmployee = employee
+            firstName.value = employee.firstName
+            lastName.value = employee.lastName
+            age.value = employee.age.toString()
+            gender = employee.gender
 
-        val addressesTypes = employee.addressess.map { AddressViewType.Filled(it) }
-        _addressess.value = addressesTypes + _addressess.value
+            val addressesTypes = employee.addressess.map { AddressViewType.Filled(it) }
+            _addressess.value = addressesTypes + _addressess.value
+        }
     }
 
     fun updateGender(newGender: String) {
@@ -118,4 +120,3 @@ class EditViewModel @Inject constructor(
         _addressess.value = newAddresses
     }
 }
-

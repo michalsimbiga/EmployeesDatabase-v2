@@ -19,14 +19,14 @@ import javax.inject.Inject
 class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
     BaseFragment<FragmentEditBinding>() {
 
-    private val injector: EditInjector
-        get() = baseActivity.application as EditInjector
-
     @Inject
     lateinit var navigator: EditNavigator
 
     @Inject
     lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val injector: EditInjector
+        get() = baseActivity.application as EditInjector
 
     private val args by navArgs<EditFragmentArgs>()
 
@@ -36,7 +36,7 @@ class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
         AddressesAdapter(
             onAddNewAddressClick = { fragmentViewModel.onAddNewAddressClicked() },
             onConfirmAddressClick = { address -> fragmentViewModel.onConfirmAddressClicked(address) },
-            onRemoveAddressClick = { fragmentViewModel.onDiscardAddressClicked() },
+            onRemoveAddressClick = { fragmentViewModel.onDiscardAddressClicked() }
         )
     }
 
@@ -64,14 +64,14 @@ class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
 
     private fun setupListeners() = with(binding) {
 
-        editableEmployeeGenderRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+        radioEditGender.setOnCheckedChangeListener { _, checkedId ->
             val selectedRadioText: String =
                 root.findViewById<RadioButton>(checkedId)?.text?.toString() ?: ""
 
             fragmentViewModel.updateGender(selectedRadioText)
         }
 
-        addEmployeeButton.setOnClickListener {
+        buttonEditDone.setOnClickListener {
             fragmentViewModel.addEmployeeToDatabase()
         }
     }
