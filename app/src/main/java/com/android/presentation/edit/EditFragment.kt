@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -65,15 +66,21 @@ class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
     private fun setupListeners() = with(binding) {
 
         radioEditGender.setOnCheckedChangeListener { _, checkedId ->
-            val selectedRadioText: String =
-                root.findViewById<RadioButton>(checkedId)?.text?.toString() ?: ""
-
-            fragmentViewModel.updateGender(selectedRadioText)
+            root.findViewById<RadioButton>(checkedId)?.let {
+                fragmentViewModel.updateGender(it.text.toString())
+            }
         }
 
         buttonEditDone.setOnClickListener {
-            fragmentViewModel.addEmployeeToDatabase()
+            if (validateData()) fragmentViewModel.addEmployeeToDatabase()
+            else Toast.makeText(context, "Invalid data", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun validateData(): Boolean = with(binding) {
+        return textEditAge.text.toString().isNotEmpty() &&
+                textEditFirstName.text.toString().isNotEmpty() &&
+                textEditLastName.text.toString().isNotEmpty()
     }
 
     private fun setupObservers() {
