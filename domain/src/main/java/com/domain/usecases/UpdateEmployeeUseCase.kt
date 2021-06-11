@@ -5,11 +5,9 @@ import com.domain.repositories.EmployeesRepository
 import com.domain.usecases.base.UseCase
 import javax.inject.Inject
 
-class AddEmployeeUseCase @Inject constructor(
+class UpdateEmployeeUseCase @Inject constructor(
     private val repository: EmployeesRepository
-) : UseCase<Employee, Long>() {
+) : UseCase<Employee, Unit>() {
 
-    override suspend fun run(params: Employee): Long {
-        return repository.insertEmployee(params)
-    }
+    override suspend fun run(params: Employee) = repository.updateEmployee(params)
 }

@@ -8,8 +8,8 @@ interface EmployeesRepository {
 
     suspend fun getAllEmployees(): Flow<List<Employee>>
     suspend fun insertEmployee(employee: Employee): Long
-    suspend fun updateEmployee(employee: Employee): Unit
-    suspend fun deleteEmployee(employee: Employee): Unit
-    suspend fun deleteAddress(address: Address): Unit
-    suspend fun insertAddresses(addresses: List<Address>): Unit
+    suspend fun updateEmployee(employee: Employee)
+    suspend fun deleteEmployee(employee: Employee)
+    suspend fun deleteAddress(address: Address)
+    suspend fun insertAddresses(addresses: List<Address>)
 }

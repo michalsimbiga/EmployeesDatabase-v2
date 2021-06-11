@@ -1,4 +1,4 @@
-package com.android.di.add
+package com.android.di.edit
 
 import androidx.lifecycle.ViewModel
 import com.android.presentation.edit.EditViewModel
@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-interface AddModule {
+interface EditModule {
 
     @Binds
     @IntoMap

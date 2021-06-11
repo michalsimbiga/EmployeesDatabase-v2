@@ -1,7 +1,7 @@
 package com.android.di
 
 import android.app.Application
-import com.android.di.add.AddInjector
+import com.android.di.edit.EditInjector
 import com.android.di.home.HomeInjector
 import com.android.di.main.MainComponent
 import com.android.di.main.MainInjector
@@ -11,7 +11,7 @@ import com.android.presentation.main.MainActivity
 
 open class InjectorApplication : Application(),
     MainInjector,
-    AddInjector,
+    EditInjector,
     HomeInjector {
 
     private lateinit var applicationComponent: ApplicationComponent

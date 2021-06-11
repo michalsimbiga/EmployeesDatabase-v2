@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.android.di.add.AddInjector
+import com.android.di.edit.EditInjector
 import com.core.ui.BaseFragment
 import com.employeedatabase.R
 import com.employeedatabase.databinding.FragmentEditBinding
@@ -19,8 +19,8 @@ import javax.inject.Inject
 class EditFragment(override val layoutId: Int = R.layout.fragment_edit) :
     BaseFragment<FragmentEditBinding>() {
 
-    private val injector: AddInjector
-        get() = baseActivity.application as AddInjector
+    private val injector: EditInjector
+        get() = baseActivity.application as EditInjector
 
     @Inject
     lateinit var navigator: EditNavigator

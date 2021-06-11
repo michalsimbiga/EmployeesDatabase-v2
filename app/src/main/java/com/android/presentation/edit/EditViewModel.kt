@@ -9,6 +9,7 @@ import com.android.model.toDomain
 import com.domain.models.Employee
 import com.domain.usecases.AddAddressUseCase
 import com.domain.usecases.AddEmployeeUseCase
+import com.domain.usecases.UpdateEmployeeUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 class EditViewModel @Inject constructor(
     private val addEmployeeUseCase: AddEmployeeUseCase,
-    private val addAddressUseCase: AddAddressUseCase
+    private val addAddressUseCase: AddAddressUseCase,
+    private val updateEmployeeUseCase: UpdateEmployeeUseCase
 ) : ViewModel() {
 
     val firstName = MutableLiveData("")
@@ -30,23 +32,37 @@ class EditViewModel @Inject constructor(
 
     private val _navigation: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val navigation: StateFlow<Boolean> = _navigation
-    
-    private var savedEmployee : EmployeeItem? = null
+
+    private var savedEmployee: EmployeeItem? = null
 
     fun addEmployeeToDatabase() {
-        val employee = Employee(
-            firstName = firstName.value.toString(),
-            lastName = lastName.value.toString(),
-            age = age.value.toString().toInt(),
-            gender = gender
-        )
+        if (savedEmployee == null) {
+            val employee = Employee(
+                firstName = firstName.value.toString(),
+                lastName = lastName.value.toString(),
+                age = age.value.toString().toInt(),
+                gender = gender
+            )
 
-        addEmployeeUseCase(
-            viewModelScope,
-            Dispatchers.IO,
-            employee,
-            onSuccess = { employeeId -> addAddressesToDb(employeeId) },
-        )
+            addEmployeeUseCase(
+                viewModelScope,
+                Dispatchers.IO,
+                employee,
+                onSuccess = { employeeId -> addAddressesToDb(employeeId) },
+            )
+        } else {
+            updateEmployeeUseCase(
+                viewModelScope,
+                Dispatchers.IO,
+                savedEmployee?.copy(
+                    firstName = firstName.value.toString(),
+                    lastName = lastName.value.toString(),
+                    age = age.value.toString().toInt(),
+                    gender = gender
+                )?.toDomain() ?: return,
+                onSuccess = { _navigation.value = true }
+            )
+        }
     }
 
     fun setEditMode(employee: EmployeeItem) {
@@ -101,7 +117,5 @@ class EditViewModel @Inject constructor(
         }
         _addressess.value = newAddresses
     }
-
-
 }
 
