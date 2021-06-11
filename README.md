@@ -17,7 +17,7 @@ Simple employee database application that stores employee data in sql database a
 
 1. Download and install the latest [Android Studio](https://developer.android.com/studio/index.html).
 2. Download or clone current repository using the command:
-`git clone git@github.com:michalsimbiga/EmployeesDatabase.git`.
+`git clone git@github.com:michalsimbiga/EmployeesDatabase-v2.git`.
 4. Launch Android Studio and select _Open an existing Android Studio project_, then select `EmployeesDatabase-v2` project in the file browser.
 5. Download additional files proposed by Android Studio to build the project (e.g., build tools).
 6. Build and run the application.
